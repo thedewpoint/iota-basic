@@ -1,5 +1,6 @@
-import * as index from '../src/index';
+// import * as index from '../src/index';
+import * as IOTA from 'iota.lib.js';
 
-test('Should have Greeter available', () => {
-  expect(index.Greeter).toBeTruthy();
+test('', () => {
+  expect(IOTA).toBeDefined();
 });
