@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": "",
   "author": {
-    "name": "",
+    "name": "Daniel Bowden",
     "email": "",
     "url": ""
   },
@@ -30,6 +30,7 @@
     "watch:test": "jest --watch"
   },
   "dependencies": {
+    "iota.lib.js": "^0.4.6"
   },
   "devDependencies": {
     "@types/jest": "^20.0.5",
