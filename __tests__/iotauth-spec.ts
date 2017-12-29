@@ -1,7 +1,24 @@
 import { IotAuth } from '../src/index';
 
-test('Should create an Iota Client with sanbox node by default', (done) => {
+beforeAll(() => {
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+});
+
+test('Should create an Iota Client with sanbox node by default', () => {
   const iotaAuth = new IotAuth();
   expect(iotaAuth.iotaClient).toBeDefined();
-  iotaAuth.iotaClient.api.getNodeInfo((error, success)=> {console.log(success); done();});
 });
+test('Should generate a new seed', async () => {
+  const iotaAuth = new IotAuth();
+  let seed = await iotaAuth.generateNewSeed();
+  expect(iotaAuth.iotaClient.valid.isTrytes(seed, 81)).toBe(true);
+});
+test('Should generate a verification code', async () => {
+  const iotaAuth = new IotAuth();
+  let code = await iotaAuth.generateValidationCode();
+  expect(iotaAuth.iotaClient.valid.isTrytes(code, 6)).toBe(true);
+});
+// iotaAuth.iotaClient.api.getNodeInfo((error, success)=> {
+//   console.log(success);
+//   done();
+// });

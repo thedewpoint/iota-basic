@@ -1,11 +1,11 @@
 import { IAddressPair } from './address-pair-api';
 
 export interface IIotAuth {
-  generateValidationCode(): string;
-  generateNewSeed(): string;
+  generateValidationCode(): Promise<string> ;
+  generateNewSeed(): Promise<string>;
   isTransactionValid(
     userSeed: string,
     receiveAddress: string,
     validationCode: string
-  ): boolean;
+  ): Promise<boolean>;
 }

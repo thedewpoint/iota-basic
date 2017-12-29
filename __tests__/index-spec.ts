@@ -1,6 +1,5 @@
-// import * as index from '../src/index';
-import * as IOTA from 'iota.lib.js';
+import * as index from '../src/index';
 
-test('', () => {
-  expect(true).toBe(true);
+test('iotauth should be available', () => {
+  expect(index.IotAuth).toBeTruthy();
 });

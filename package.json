@@ -30,6 +30,7 @@
     "watch:test": "jest --watch"
   },
   "dependencies": {
+    "iota-seed-generator": "^1.0.0",
     "iota.lib.js": "^0.4.6"
   },
   "devDependencies": {
