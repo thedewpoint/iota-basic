@@ -3,7 +3,7 @@ import { IIotAuth } from '../api/iotauth-api';
 
 export class IotAuth implements IIotAuth {
   public readonly iotaClient: any;
-  constructor(node: string = 'http://sandbox.iotatoken.com/api/v1') {
+  constructor(node: string = 'https://nodes.iota.cafe') {
     this.iotaClient = new IOTA({
       provider: node,
     });
