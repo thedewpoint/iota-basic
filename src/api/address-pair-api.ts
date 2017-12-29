@@ -1,4 +1,4 @@
-export default interface IAddressPair {
+export interface IAddressPair {
   readonly publicKey: string;
   readonly privateKey: string;
-};
+}

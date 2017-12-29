@@ -1,2 +1,2 @@
-export * from './address-pair';
-export * from './iotauth';
+export { AddressPair } from './address-pair';
+export { IotAuth } from './iotauth';

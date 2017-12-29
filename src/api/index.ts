@@ -1,2 +1,2 @@
-export * from './address-pair-api';
-export * from './iotauth-api';
+export { IAddressPair } from './address-pair-api';
+export { IIotAuth } from './iotauth-api';

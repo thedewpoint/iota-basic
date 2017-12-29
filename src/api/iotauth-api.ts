@@ -1,6 +1,6 @@
-import AddressPairApi from './address-pair-api';
+import { IAddressPair } from './address-pair-api';
 
-export default interface IIotAuth {
+export interface IIotAuth {
   generateValidationCode(): string;
   generateNewSeed(): string;
   isTransactionValid(
@@ -8,4 +8,4 @@ export default interface IIotAuth {
     receiveAddress: string,
     validationCode: string
   ): boolean;
-};
+}
