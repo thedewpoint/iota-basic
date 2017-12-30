@@ -1,7 +1,6 @@
 import * as iotaSeed from 'iota-seed-generator';
 import * as IOTA from 'iota.lib.js';
 import { IIotAuth } from '../api/iotauth-api';
-import { AddressPair } from './address-pair';
 export class IotAuth implements IIotAuth {
   public readonly iotaClient: any;
   private receiveAddress: string;
