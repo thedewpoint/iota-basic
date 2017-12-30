@@ -24,11 +24,11 @@ export class IotAuth implements IIotAuth {
     return this.receiveAddress;
   }
 
-  private async getNewAddress(seed : string) : Promise<string> {
+  private async getNewAddress(seed : string, options: any = {}) : Promise<string> {
     return new Promise<string>( resolve => {
       this.iotaClient.api.getNewAddress(
         seed,
-        {index: 0},
+        options,
         (empty: any, address: string, transactions: Array<any>) => {
           resolve(address);
         }
