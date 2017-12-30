@@ -1,11 +1,9 @@
-import { IAddressPair } from './address-pair-api';
-
 export interface IIotAuth {
-  generateValidationCode(): Promise<string> ;
+  generateValidationCode(): Promise<string>;
   generateNewSeed(): Promise<string>;
+  getReceiveAddress(): Promise<string>;
   isTransactionValid(
     userSeed: string,
-    receiveAddress: string,
     validationCode: string
   ): Promise<boolean>;
 }

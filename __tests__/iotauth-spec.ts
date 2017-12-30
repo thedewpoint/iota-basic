@@ -18,7 +18,15 @@ test('Should generate a verification code', async () => {
   let code = await iotaAuth.generateValidationCode();
   expect(iotaAuth.iotaClient.valid.isTrytes(code, 6)).toBe(true);
 });
-// iotaAuth.iotaClient.api.getNodeInfo((error, success)=> {
-//   console.log(success);
-//   done();
-// });
+test('Should generate a seed and public address if one is not provided', async () => {
+  const iotaAuth = new IotAuth();
+  let receiveAddress = await iotaAuth.getReceiveAddress();
+  expect(iotaAuth.iotaClient.valid.isAddress(receiveAddress)).toBe(true);
+});
+test('Should generate the same receive address from seed', async () => {
+  const iotaAuth = new IotAuth();
+  let receiveAddress = await iotaAuth.getReceiveAddress();
+  expect(iotaAuth.iotaClient.valid.isAddress(receiveAddress)).toBe(true);
+  let newReceiveAddress = await iotaAuth.getReceiveAddress();
+  expect(receiveAddress).toEqual(newReceiveAddress);
+});
