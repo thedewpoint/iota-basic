@@ -20,21 +20,24 @@ test('Should generate a verification code', async () => {
   expect(iotaAuth.iotaClient.valid.isTrytes(code, 6)).toBe(true);
 });
 test('Should set the seed if provided', async () => {
-  const seed = "PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM";
+  const seed =
+    'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
   const iotaAuth = new IotAuth(seed);
   let mySeed = await iotaAuth.getSeed();
   expect(mySeed).toEqual(seed);
 });
 
 test('isTransactionValid should return true for valid authentication if the transaction code is sent from the expected address', async () => {
-  const seed = "PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM";
-  const getAccountData = jest.fn().mockImplementation(function (seed, callback) {
+  const seed =
+    'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
+  const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
     callback(null, accountData);
   });
   const iotaAuth = new IotAuth(seed);
-  iotaAuth.iotaClient.api.getAccountData = getAccountData.bind(iotaAuth.iotaClient.api);
-  let code = "LMNOPQ";
+  iotaAuth.iotaClient.api.getAccountData = getAccountData.bind(
+    iotaAuth.iotaClient.api
+  );
+  let code = 'LMNOPQ';
   let isValid = await iotaAuth.isTransactionValid(code);
   expect(isValid).toBe(true);
 });
-
