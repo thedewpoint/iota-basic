@@ -2,11 +2,10 @@ import * as iotaSeed from 'iota-seed-generator';
 import * as IOTA from 'iota.lib.js';
 import * as moment from 'moment';
 import { IIotAuth } from '../api/iotauth-api';
-
 export class IotAuth implements IIotAuth {
   public readonly iotaClient: any;
   private receiveSeed: string;
-  private duration: number;
+  // private duration: number;
   constructor(
     seed?: string,
     duration: number = 5,
