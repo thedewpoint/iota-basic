@@ -1,26 +1,26 @@
 import * as iotaSeed from 'iota-seed-generator';
 import * as IOTA from 'iota.lib.js';
 import { IIotAuth } from '../api/iotauth-api';
+import * as moment from 'moment';
 export class IotAuth implements IIotAuth {
   public readonly iotaClient: any;
-  private receiveAddress: string;
   private receiveSeed: string;
-  constructor(node: string = 'https://nodes.iota.cafe', seed?: string) {
+  private duration: number;
+  constructor( seed?: string, duration: number = 5, node: string = 'https://nodes.iota.cafe',) {
     this.iotaClient = new IOTA({
       provider: node,
     });
     if (seed) {
       this.receiveSeed = seed;
-    }
+    } 
+    this.duration = duration;
   }
-  public async getReceiveAddress(): Promise<string> {
-    if (!this.receiveSeed) {
-      this.receiveSeed = await this.generateNewSeed();
+
+  public async getSeed() : Promise<string> {
+    if(!this.receiveSeed) {
+      this.receiveSeed =  await this.generateNewSeed();
     }
-    if(!this.receiveAddress) {
-      this.receiveAddress = await this.getNewAddress(this.receiveSeed);
-    }
-    return this.receiveAddress;
+    return this.receiveSeed;
   }
 
   private async getNewAddress(seed : string, options: any = {}) : Promise<string> {
@@ -38,14 +38,31 @@ export class IotAuth implements IIotAuth {
     const seed: string = await iotaSeed();
     return seed.slice(0, 6);
   }
-  public async generateNewSeed(): Promise<string> {
+  private async generateNewSeed(): Promise<string> {
     const seed: string = await iotaSeed();
     return seed;
   }
-  public isTransactionValid(
-    userSeed: string,
+  public async isTransactionValid(
     validationCode: string
   ): Promise<boolean> {
-    throw new Error('Method not implemented.');
+    const receiveSeed = await this.getSeed();
+    let accountData: any = await this.getAccountData(receiveSeed);
+    try {
+      let message = this.iotaClient.utils.extractJson(accountData.transfers[accountData.transfers.length - 1]);
+      message = JSON.parse(message);
+      return message.code === validationCode;
+    } catch (e) {
+      return false;
+    }
+
+  }
+
+  private async getAccountData(seed : string) : Promise<any> {
+    const _this = this;
+    return new Promise<any>((resolve, reject) => {
+      this.iotaClient.api.getAccountData(seed, function(error: any, accountData: any) {
+        resolve(accountData);
+      });
+    });
   }
 }

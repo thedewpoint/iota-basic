@@ -31,7 +31,8 @@
   },
   "dependencies": {
     "iota-seed-generator": "^1.0.0",
-    "iota.lib.js": "^0.4.6"
+    "iota.lib.js": "^0.4.6",
+    "moment": "^2.20.1"
   },
   "devDependencies": {
     "@types/jest": "^20.0.5",
@@ -39,7 +40,6 @@
     "coveralls": "^2.0.0",
     "jest": "^20.0.4",
     "jest-environment-node-debug": "^2.0.0",
-    "nock": "^9.1.5",
     "prettier": "^1.5.2",
     "rimraf": "^2.0.0",
     "ts-jest": "^20.0.7",
