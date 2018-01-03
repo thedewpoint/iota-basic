@@ -1,16 +1,22 @@
 {
   "name": "iotauth",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "iotauth",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/thedewpoint/iotauth.git",
   "author": {
     "name": "Daniel Bowden",
     "email": "",
     "url": ""
   },
   "keywords": [
-    ""
+    "iota",
+    "authentication",
+    "2fa",
+    "auth",
+    "tangle",
+    "miota",
+    "iotauth"
   ],
   "files": [
     "lib"
@@ -49,7 +55,7 @@
     "typescript": "^2.3.0"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=9.2.1"
   },
   "jest": {
     "transform": {
