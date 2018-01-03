@@ -35,9 +35,17 @@ test('isTransactionValid should return true for valid authentication if the tran
   const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
     callback(null, accountData);
   });
-  const getNewAddress = jest.fn().mockImplementation(function(seed, options, callback) {
-    callback(null, ["QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW"],[]);
-  });
+  const getNewAddress = jest
+    .fn()
+    .mockImplementation(function(seed, options, callback) {
+      callback(
+        null,
+        [
+          'QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW',
+        ],
+        []
+      );
+    });
   const iotaAuth = new IotAuth(seed);
   iotaAuth.iotaClient.api.getAccountData = getAccountData.bind(
     iotaAuth.iotaClient.api
@@ -55,9 +63,17 @@ test('isTransactionValid should return false for valid authentication if the tra
   const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
     callback(null, accountData);
   });
-  const getNewAddress = jest.fn().mockImplementation(function(seed, options, callback) {
-    callback(null, ["QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW"],[]);
-  });
+  const getNewAddress = jest
+    .fn()
+    .mockImplementation(function(seed, options, callback) {
+      callback(
+        null,
+        [
+          'QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW',
+        ],
+        []
+      );
+    });
   const iotaAuth = new IotAuth(seed, 6);
   iotaAuth.iotaClient.api.getAccountData = getAccountData.bind(
     iotaAuth.iotaClient.api
@@ -75,9 +91,17 @@ test('isTransactionValid should return false for valid authentication if the tra
   const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
     callback(null, accountData);
   });
-  const getNewAddress = jest.fn().mockImplementation(function(seed, options, callback) {
-    callback(null, ["QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW"],[]);
-  });
+  const getNewAddress = jest
+    .fn()
+    .mockImplementation(function(seed, options, callback) {
+      callback(
+        null,
+        [
+          'QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW',
+        ],
+        []
+      );
+    });
   const iotaAuth = new IotAuth(seed);
   iotaAuth.iotaClient.api.getAccountData = getAccountData.bind(
     iotaAuth.iotaClient.api
@@ -95,9 +119,18 @@ test('isTransactionValid should return false for valid authentication if the add
   const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
     callback(null, accountDataReuse);
   });
-  const getNewAddress = jest.fn().mockImplementation(function(seed, options, callback) {
-    callback(null, ["QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW","YWNET9JHIIGBECEMCRULUOEYLDIRRPKRNJNUNXBBBWJWITEAYMSRGAPDGBLNUCYRLWPHTEKPSRZICEVYB"],[]);
-  });
+  const getNewAddress = jest
+    .fn()
+    .mockImplementation(function(seed, options, callback) {
+      callback(
+        null,
+        [
+          'QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW',
+          'YWNET9JHIIGBECEMCRULUOEYLDIRRPKRNJNUNXBBBWJWITEAYMSRGAPDGBLNUCYRLWPHTEKPSRZICEVYB',
+        ],
+        []
+      );
+    });
   const iotaAuth = new IotAuth(seed);
   iotaAuth.iotaClient.api.getAccountData = getAccountData.bind(
     iotaAuth.iotaClient.api
@@ -115,9 +148,18 @@ test('isTransactionValid should return true for valid authentication if the addr
   const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
     callback(null, accountDataReuseCorrected);
   });
-  const getNewAddress = jest.fn().mockImplementation(function(seed, options, callback) {
-    callback(null, ["QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW","YWNET9JHIIGBECEMCRULUOEYLDIRRPKRNJNUNXBBBWJWITEAYMSRGAPDGBLNUCYRLWPHTEKPSRZICEVYB"],[]);
-  });
+  const getNewAddress = jest
+    .fn()
+    .mockImplementation(function(seed, options, callback) {
+      callback(
+        null,
+        [
+          'QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW',
+          'YWNET9JHIIGBECEMCRULUOEYLDIRRPKRNJNUNXBBBWJWITEAYMSRGAPDGBLNUCYRLWPHTEKPSRZICEVYB',
+        ],
+        []
+      );
+    });
   const iotaAuth = new IotAuth(seed);
   iotaAuth.iotaClient.api.getAccountData = getAccountData.bind(
     iotaAuth.iotaClient.api
