@@ -1,8 +1,10 @@
 import { IotAuth } from '../src/index';
 const accountData = require('./accountdata.json');
+const accountDataReuse = require('./accountdata.addressreuse.json');
+const accountDataReuseCorrected = require('./accountdata.addressreuse.corrected.json');
 
 beforeAll(() => {
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
 });
 
 test('Should create an Iota Client with sanbox node by default', () => {
@@ -40,4 +42,60 @@ test('isTransactionValid should return true for valid authentication if the tran
   let code = 'LMNOPQ';
   let isValid = await iotaAuth.isTransactionValid(code);
   expect(isValid).toBe(true);
+});
+test('isTransactionValid should return false for valid authentication if the transaction code is sent from the expected address but has expired based on duration', async () => {
+  const seed =
+    'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
+  const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
+    callback(null, accountData);
+  });
+  const iotaAuth = new IotAuth(seed,6);
+  iotaAuth.iotaClient.api.getAccountData = getAccountData.bind(
+    iotaAuth.iotaClient.api
+  );
+  let code = 'LMNOPQ';
+  let isValid = await iotaAuth.isTransactionValid(code);
+  expect(isValid).toBe(false);
+});
+test('isTransactionValid should return false for valid authentication if the transaction code is incorrect', async () => {
+  const seed =
+    'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
+  const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
+    callback(null, accountData);
+  });
+  const iotaAuth = new IotAuth(seed);
+  iotaAuth.iotaClient.api.getAccountData = getAccountData.bind(
+    iotaAuth.iotaClient.api
+  );
+  let code = 'ABCDEF';
+  let isValid = await iotaAuth.isTransactionValid(code);
+  expect(isValid).toBe(false);
+});
+test('isTransactionValid should return false for valid authentication if the address is reused', async () => {
+  const seed =
+    'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
+  const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
+    callback(null, accountDataReuse);
+  });
+  const iotaAuth = new IotAuth(seed);
+  iotaAuth.iotaClient.api.getAccountData = getAccountData.bind(
+    iotaAuth.iotaClient.api
+  );
+  let code = 'LMNOPQ';
+  let isValid = await iotaAuth.isTransactionValid(code);
+  expect(isValid).toBe(false);
+});
+test('isTransactionValid should return true for valid authentication if the address is reused but then corrected', async () => {
+  const seed =
+    'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
+  const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
+    callback(null, accountDataReuseCorrected);
+  });
+  const iotaAuth = new IotAuth(seed);
+  iotaAuth.iotaClient.api.getAccountData = getAccountData.bind(
+    iotaAuth.iotaClient.api
+  );
+  let code = 'LMNOPQ';
+  let isValid = await iotaAuth.isTransactionValid(code);
+  expect(isValid).toBe(false);
 });

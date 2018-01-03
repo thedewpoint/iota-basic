@@ -5,10 +5,10 @@ import { IIotAuth } from '../api/iotauth-api';
 export class IotAuth implements IIotAuth {
   public readonly iotaClient: any;
   private receiveSeed: string;
-  // private duration: number;
+  private duration: number;
   constructor(
     seed?: string,
-    duration: number = 5,
+    duration: number = Infinity,
     node: string = 'https://nodes.iota.cafe'
   ) {
     this.iotaClient = new IOTA({
@@ -22,12 +22,17 @@ export class IotAuth implements IIotAuth {
   public async isTransactionValid(validationCode: string): Promise<boolean> {
     const receiveSeed = await this.getSeed();
     const accountData: any = await this.getAccountData(receiveSeed);
+    const transferObj = accountData.transfers[accountData.transfers.length - 1];
+    const transfer = transferObj[0];
     try {
-      let message = this.iotaClient.utils.extractJson(
-        accountData.transfers[accountData.transfers.length - 1]
+      let code = this.iotaClient.utils.extractJson(transferObj);
+      code = JSON.parse(code);
+      const isValidAddress = await this.isValidAddress(
+        transfer.address,
+        accountData.transfers.length - 1
       );
-      message = JSON.parse(message);
-      return message.code === validationCode;
+      const isValidTimestamp = this.isValidTimestamp(transfer.timestamp);
+      return code.code === validationCode && isValidAddress && isValidTimestamp;
     } catch (e) {
       return false;
     }
@@ -42,21 +47,42 @@ export class IotAuth implements IIotAuth {
     const seed: string = await iotaSeed();
     return seed.slice(0, 6);
   }
-  // private async getNewAddress(
-  //   seed: string,
-  //   options: any = {}
-  // ): Promise<string> {
-  //   return new Promise<string>(resolve => {
-  //     this.iotaClient.api.getNewAddress(
-  //       seed,
-  //       options,
-  //       (empty: any, address: string, transactions: any[]) => {
-  //         resolve(address);
-  //       }
-  //     );
-  //   });
-  // }
+  private async getNewAddress(
+    seed: string,
+    options: any = {index: 0, returnAll: true}
+  ): Promise<string> {
+    return new Promise<string>(resolve => {
+      this.iotaClient.api.getNewAddress(
+        seed,
+        options,
+        (empty: any, addresses: string[], transactions: any[]) => {
+          if (addresses instanceof Array) {
+            resolve(addresses[Math.min(options.index,addresses.length-1)]);
+          } else {
+            resolve(addresses);
+          }
+        }
+      );
+    });
+  }
 
+  private async isValidAddress(
+    receiveAddress: string,
+    index: number
+  ): Promise<boolean> {
+    const correctAddress = await this.getNewAddress(this.receiveSeed, {
+      index,
+      returnAll: true
+    });
+    return correctAddress === receiveAddress;
+  }
+  private isValidTimestamp(timestamp: number): boolean {
+    let isValid: boolean = false;
+    const transactionTime: moment.Moment = moment(timestamp * 1000);
+    const now: moment.Moment = moment();
+    const diff: number = now.diff(transactionTime, 'minutes');
+    return diff <= this.duration;
+  }
   private async generateNewSeed(): Promise<string> {
     const seed: string = await iotaSeed();
     return seed;
