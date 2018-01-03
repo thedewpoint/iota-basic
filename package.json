@@ -1,7 +1,7 @@
 {
   "name": "iota-auth",
   "version": "1.0.0",
-  "description": "iotauth",
+  "description": "2fa module using iota's tangle as the backend",
   "license": "MIT",
   "repository": "https://github.com/thedewpoint/iotauth.git",
   "author": {
