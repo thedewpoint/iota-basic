@@ -20,6 +20,10 @@ iotauth is a 2fa module built on iota's tangle ledger. Sites wishing to implemen
 6. user must send a 0 value transaction to their own public address (without reusing an address) containing the code provided by the site in json format {code: 'verificationcode'}.
 7. The transaction must be sent within the timeframe specified by the site or application (Defaults to infinity)
 
+This module uses iota-seed-generator to generate iota seeds. It appears this module uses windows powershell (when on windows) to generate a seed which I believe is not considered secure at this time. Please be aware of this when using the module. For more info check this github: https://github.com/bmavity/iota-seed-generator
+
+related issue: https://github.com/bmavity/iota-seed-generator/issues/1
+
 
 Using npm:
 ```shell
