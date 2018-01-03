@@ -49,7 +49,7 @@ test('isTransactionValid should return false for valid authentication if the tra
   const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
     callback(null, accountData);
   });
-  const iotaAuth = new IotAuth(seed,6);
+  const iotaAuth = new IotAuth(seed, 6);
   iotaAuth.iotaClient.api.getAccountData = getAccountData.bind(
     iotaAuth.iotaClient.api
   );

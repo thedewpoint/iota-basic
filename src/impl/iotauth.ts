@@ -49,7 +49,7 @@ export class IotAuth implements IIotAuth {
   }
   private async getNewAddress(
     seed: string,
-    options: any = {index: 0, returnAll: true}
+    options: any = { index: 0, returnAll: true }
   ): Promise<string> {
     return new Promise<string>(resolve => {
       this.iotaClient.api.getNewAddress(
@@ -57,7 +57,7 @@ export class IotAuth implements IIotAuth {
         options,
         (empty: any, addresses: string[], transactions: any[]) => {
           if (addresses instanceof Array) {
-            resolve(addresses[Math.min(options.index,addresses.length-1)]);
+            resolve(addresses[Math.min(options.index, addresses.length - 1)]);
           } else {
             resolve(addresses);
           }
@@ -72,12 +72,11 @@ export class IotAuth implements IIotAuth {
   ): Promise<boolean> {
     const correctAddress = await this.getNewAddress(this.receiveSeed, {
       index,
-      returnAll: true
+      returnAll: true,
     });
     return correctAddress === receiveAddress;
   }
   private isValidTimestamp(timestamp: number): boolean {
-    let isValid: boolean = false;
     const transactionTime: moment.Moment = moment(timestamp * 1000);
     const now: moment.Moment = moment();
     const diff: number = now.diff(transactionTime, 'minutes');
