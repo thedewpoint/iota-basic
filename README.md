@@ -22,12 +22,12 @@ iotauth is a 2fa module built on iota's tangle ledger. Sites wishing to implemen
 
 Using npm:
 ```shell
-$ npm i --save iotauth
+$ npm i --save iota-auth
 ```
 
 In Node.js:
 ```js
-import { IotAuth } from 'iotauth';
+import { IotAuth } from 'iota-auth';
 
 const iotaAuth = new IotAuth();
 //generate a new seed automatically to present to user /store
