@@ -43,6 +43,10 @@ let code = await iotaAuth.generateValidationCode();
 const seed ='PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
 const iotaAuth = new IotAuth(seed);
 
+//initialize with stored seed and expiration time (minutes)
+const seed ='PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
+const iotaAuth = new IotAuth(seed, 6);
+//checks whether code was passed within 6 minutes
 
 //pass validation code
 let code = 'LMNOPQ';
