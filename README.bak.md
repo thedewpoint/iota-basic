@@ -1,7 +1,6 @@
 
 
 
-
 # IotAuth
 [![Build Status](https://travis-ci.org/thedewpoint/iotauth.svg?branch=master)](https://travis-ci.org/thedewpoint/iotauth.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/thedewpoint/iotauth/badge.svg?branch=master)](https://coveralls.io/github/thedewpoint/iotauth?branch=master)
@@ -11,16 +10,3 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fthedewpoint%2Fiotauth.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fthedewpoint%2Fiotauth?ref=badge_shield)
 <img align="right" height="260" src="https://raw.githubusercontent.com/thedewpoint/iotauth/master/iotauth.png">
 Get ready for some serious IOT awesomeness, although it's not a lighthouse. 
-
-
-
-## Index
-
-### External modules
-
-* ["api/iotauth-api"](modules/_api_iotauth_api_.md)
-* ["impl/iotauth"](modules/_impl_iotauth_.md)
-
-
-
----
