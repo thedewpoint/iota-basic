@@ -10,3 +10,5 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fthedewpoint%2Fiotauth.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fthedewpoint%2Fiotauth?ref=badge_shield)
 <img align="right" height="260" src="https://raw.githubusercontent.com/thedewpoint/iotauth/master/iotauth.png">
 Get ready for some serious IOT awesomeness, although it's not a lighthouse. 
+doc updates
+typedoc --theme markdown  --out ./documentation ./src
