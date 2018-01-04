@@ -22,15 +22,19 @@ export class IotAuth implements IIotAuth {
   public async isTransactionValid(validationCode?: string): Promise<boolean> {
     const receiveSeed = await this.getSeed();
     const accountData: any = await this.getAccountData(receiveSeed);
-    const transferObj = accountData.transfers[accountData.transfers.length - 1];
+    const transferObj = accountData.transfers.pop();
     const transfer = transferObj[0];
+    const previousAddresses = accountData.transfers.map(
+      (myTransfer: any) => myTransfer[0].address
+    );
     try {
       let code = this.iotaClient.utils.extractJson(transferObj);
       code = JSON.parse(code);
-      const isValidAddress = await this.isValidAddress(
-        transfer.address,
-        accountData.transfers.length - 1
-      );
+      const isValidAddress =
+        (await this.isValidAddress(
+          transfer.address,
+          accountData.transfers.length - 1
+        )) && !previousAddresses.includes(transfer.address);
       const isValidTimestamp = this.isValidTimestamp(transfer.timestamp);
       return (
         ((code && code.code === validationCode) || !validationCode) &&
@@ -51,20 +55,16 @@ export class IotAuth implements IIotAuth {
     const seed: string = await iotaSeed();
     return seed.slice(0, 6);
   }
-  private async getNewAddress(
+  private async getNewAddresses(
     seed: string,
     options: any = { index: 0, returnAll: true }
-  ): Promise<string> {
-    return new Promise<string>(resolve => {
+  ): Promise<string[]> {
+    return new Promise<string[]>(resolve => {
       this.iotaClient.api.getNewAddress(
         seed,
         options,
         (empty: any, addresses: string[], transactions: any[]) => {
-          if (addresses instanceof Array) {
-            resolve(addresses[Math.min(options.index, addresses.length - 1)]);
-          } else {
-            resolve(addresses);
-          }
+          resolve(addresses);
         }
       );
     });
@@ -74,11 +74,11 @@ export class IotAuth implements IIotAuth {
     receiveAddress: string,
     index: number
   ): Promise<boolean> {
-    const correctAddress = await this.getNewAddress(this.receiveSeed, {
+    const correctAddresses = await this.getNewAddresses(this.receiveSeed, {
       index,
       returnAll: true,
     });
-    return correctAddress === receiveAddress;
+    return correctAddresses.includes(receiveAddress);
   }
   private isValidTimestamp(timestamp: number): boolean {
     const transactionTime: moment.Moment = moment(timestamp * 1000);

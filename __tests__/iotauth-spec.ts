@@ -1,12 +1,11 @@
 import { IotAuth } from '../src/index';
-const accountData = require('./accountdata.json');
-const accountDataReuse = require('./accountdata.addressreuse.json');
-const accountDataReuseCorrected = require('./accountdata.addressreuse.corrected.json');
-
 beforeAll(() => {
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
 });
 
+afterEach(() => {
+  jest.resetModules();
+});
 test('Should create an Iota Client with sanbox node by default', () => {
   const iotaAuth = new IotAuth();
   expect(iotaAuth.iotaClient).toBeDefined();
@@ -33,7 +32,7 @@ test('isTransactionValid should return true for valid authentication if the tran
   const seed =
     'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
   const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
-    callback(null, accountData);
+    callback(null, require('./accountdata.json'));
   });
   const getNewAddress = jest
     .fn()
@@ -42,6 +41,7 @@ test('isTransactionValid should return true for valid authentication if the tran
         null,
         [
           'QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW',
+          'YWNET9JHIIGBECEMCRULUOEYLDIRRPKRNJNUNXBBBWJWITEAYMSRGAPDGBLNUCYRLWPHTEKPSRZICEVYB',
         ],
         []
       );
@@ -61,7 +61,7 @@ test('isTransactionValid should return false for valid authentication if the tra
   const seed =
     'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
   const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
-    callback(null, accountData);
+    callback(null, require('./accountdata.json'));
   });
   const getNewAddress = jest
     .fn()
@@ -70,6 +70,7 @@ test('isTransactionValid should return false for valid authentication if the tra
         null,
         [
           'QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW',
+          'YWNET9JHIIGBECEMCRULUOEYLDIRRPKRNJNUNXBBBWJWITEAYMSRGAPDGBLNUCYRLWPHTEKPSRZICEVYB',
         ],
         []
       );
@@ -83,13 +84,14 @@ test('isTransactionValid should return false for valid authentication if the tra
   );
   let code = 'LMNOPQ';
   let isValid = await iotaAuth.isTransactionValid(code);
+
   expect(isValid).toBe(false);
 });
 test('isTransactionValid should return false for valid authentication if the transaction code is incorrect', async () => {
   const seed =
     'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
   const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
-    callback(null, accountData);
+    callback(null, require('./accountdata.json'));
   });
   const getNewAddress = jest
     .fn()
@@ -98,6 +100,7 @@ test('isTransactionValid should return false for valid authentication if the tra
         null,
         [
           'QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW',
+          'YWNET9JHIIGBECEMCRULUOEYLDIRRPKRNJNUNXBBBWJWITEAYMSRGAPDGBLNUCYRLWPHTEKPSRZICEVYB',
         ],
         []
       );
@@ -111,13 +114,14 @@ test('isTransactionValid should return false for valid authentication if the tra
   );
   let code = 'ABCDEF';
   let isValid = await iotaAuth.isTransactionValid(code);
+
   expect(isValid).toBe(false);
 });
 test('isTransactionValid should return false for valid authentication if the address is reused', async () => {
   const seed =
     'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
   const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
-    callback(null, accountDataReuse);
+    callback(null, require('./accountdata.addressreuse.json'));
   });
   const getNewAddress = jest
     .fn()
@@ -146,7 +150,7 @@ test('isTransactionValid should return true for valid authentication if the addr
   const seed =
     'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
   const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
-    callback(null, accountDataReuseCorrected);
+    callback(null, require('./accountdata.addressreuse.corrected.json'));
   });
   const getNewAddress = jest
     .fn()
@@ -156,6 +160,7 @@ test('isTransactionValid should return true for valid authentication if the addr
         [
           'QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW',
           'YWNET9JHIIGBECEMCRULUOEYLDIRRPKRNJNUNXBBBWJWITEAYMSRGAPDGBLNUCYRLWPHTEKPSRZICEVYB',
+          'QYCMFMSLBK9SHOJLDFZMKGXNEGZOUWJJAMVDSMQEDQHKEAVXBHLKTKEB9ZWCNENHYTOASADLTVJVAETUW',
         ],
         []
       );
@@ -169,6 +174,7 @@ test('isTransactionValid should return true for valid authentication if the addr
   );
   let code = 'LMNOPQ';
   let isValid = await iotaAuth.isTransactionValid(code);
+
   expect(isValid).toBe(true);
 });
 
@@ -176,7 +182,7 @@ test('isTransactionValid should return true for valid authentication if no code 
   const seed =
     'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
   const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
-    callback(null, accountDataReuseCorrected);
+    callback(null, require('./accountdata.addressreuse.corrected.json'));
   });
   const getNewAddress = jest
     .fn()
@@ -186,6 +192,7 @@ test('isTransactionValid should return true for valid authentication if no code 
         [
           'QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW',
           'YWNET9JHIIGBECEMCRULUOEYLDIRRPKRNJNUNXBBBWJWITEAYMSRGAPDGBLNUCYRLWPHTEKPSRZICEVYB',
+          'QYCMFMSLBK9SHOJLDFZMKGXNEGZOUWJJAMVDSMQEDQHKEAVXBHLKTKEB9ZWCNENHYTOASADLTVJVAETUW',
         ],
         []
       );
