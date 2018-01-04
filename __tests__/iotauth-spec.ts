@@ -171,3 +171,33 @@ test('isTransactionValid should return true for valid authentication if the addr
   let isValid = await iotaAuth.isTransactionValid(code);
   expect(isValid).toBe(true);
 });
+
+test('isTransactionValid should return true for valid authentication if no code is specified', async () => {
+  const seed =
+    'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
+  const getAccountData = jest.fn().mockImplementation(function(seed, callback) {
+    callback(null, accountDataReuseCorrected);
+  });
+  const getNewAddress = jest
+    .fn()
+    .mockImplementation(function(seed, options, callback) {
+      callback(
+        null,
+        [
+          'QEL99XNPRACLRNEHKQXKNJXPKCPYNUYQIVNELMVFUQPQMVLIJTUGJL9XPDNKJFANOAJB9FCKKAMFEERSW',
+          'YWNET9JHIIGBECEMCRULUOEYLDIRRPKRNJNUNXBBBWJWITEAYMSRGAPDGBLNUCYRLWPHTEKPSRZICEVYB',
+        ],
+        []
+      );
+    });
+  const iotaAuth = new IotAuth(seed);
+  iotaAuth.iotaClient.api.getAccountData = getAccountData.bind(
+    iotaAuth.iotaClient.api
+  );
+  iotaAuth.iotaClient.api.getNewAddress = getNewAddress.bind(
+    iotaAuth.iotaClient.api
+  );
+  let code = 'LMNOPQ';
+  let isValid = await iotaAuth.isTransactionValid();
+  expect(isValid).toBe(true);
+});

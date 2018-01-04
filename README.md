@@ -16,9 +16,9 @@ iotauth is a 2fa module built on iota's tangle ledger. Sites wishing to implemen
 2. user backs up seed
 3. site or app stores users' seed as well.
 4. user attempts to log in to site
-5. site presents user with a generated code
-6. user must send a 0 value transaction to their own public address (without reusing an address) containing the code provided by the site in json format {code: 'verificationcode'}.
-7. The transaction must be sent within the timeframe specified by the site or application (Defaults to infinity)
+5. user must send a 0 value transaction to their own public address (without reusing an address) 
+6. The transaction must be sent within the timeframe specified by the site or application (Defaults to infinity)
+7. optionally the app or site can specify a validation code for the user to be sent in json format {code: 'verificationcode'}.
 
 This module uses iota-seed-generator to generate iota seeds. It appears this module uses windows powershell (when on windows) to generate a seed which I believe is not considered secure at this time. Please be aware of this when using the module. For more info check this github: https://github.com/bmavity/iota-seed-generator
 
@@ -32,7 +32,11 @@ $ npm i --save iota-auth
 
 In Node.js:
 ```js
+//with imports
 import { IotAuth } from 'iota-auth';
+
+//with require
+const IotAuth = require('iota-auth').IotAuth;
 
 const iotaAuth = new IotAuth();
 //generate a new seed automatically to present to user /store
@@ -55,6 +59,9 @@ const iotaAuth = new IotAuth(seed, 6);
 //pass validation code
 let code = 'LMNOPQ';
 let isValid = await iotaAuth.isTransactionValid(code);
+
+//validate without a code
+let isValid = await iotaAuth.isTransactionValid();
 
 
 ```

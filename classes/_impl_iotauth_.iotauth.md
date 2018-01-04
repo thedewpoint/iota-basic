@@ -244,7 +244,7 @@ ___
 
 ###  isTransactionValid
 
-► **isTransactionValid**(validationCode: *`string`*): `Promise`.<`boolean`>
+► **isTransactionValid**(validationCode?: *`string`*): `Promise`.<`boolean`>
 
 
 

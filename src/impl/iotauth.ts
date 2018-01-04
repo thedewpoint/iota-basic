@@ -19,7 +19,7 @@ export class IotAuth implements IIotAuth {
     }
     this.duration = duration;
   }
-  public async isTransactionValid(validationCode: string): Promise<boolean> {
+  public async isTransactionValid(validationCode?: string): Promise<boolean> {
     const receiveSeed = await this.getSeed();
     const accountData: any = await this.getAccountData(receiveSeed);
     const transferObj = accountData.transfers[accountData.transfers.length - 1];
@@ -32,7 +32,11 @@ export class IotAuth implements IIotAuth {
         accountData.transfers.length - 1
       );
       const isValidTimestamp = this.isValidTimestamp(transfer.timestamp);
-      return code.code === validationCode && isValidAddress && isValidTimestamp;
+      return (
+        ((code && code.code === validationCode) || !validationCode) &&
+        isValidAddress &&
+        isValidTimestamp
+      );
     } catch (e) {
       return false;
     }
