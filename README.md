@@ -16,7 +16,7 @@ iotauth is a 2fa module built on iota's tangle ledger. Sites wishing to implemen
 2. user backs up seed
 3. site or app stores users' seed as well.
 4. user attempts to log in to site
-5. user must send a 0 value transaction to their own public address (without reusing an address) 
+5. user must attach a new address using their seed without reusing a previous address(send a 0 value transaction to their own public address)
 6. The transaction must be sent within the timeframe specified by the site or application (Defaults to infinity)
 7. optionally the app or site can specify a validation code for the user to be sent in json format {code: 'verificationcode'}.
 
