@@ -11,7 +11,7 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fthedewpoint%2Fiotauth.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fthedewpoint%2Fiotauth?ref=badge_shield)
 <img align="right" height="260" src="https://raw.githubusercontent.com/thedewpoint/iotauth/master/iotauth.png">
 
-iotauth is a 2fa module built on iota's tangle ledger. Sites wishing to implement this authentication method would follow this flow.
+iotauth is a 2fa module built on iota's tangle ledger. To see an example of iotauth being implemented, checkout Blogshot's demo over at https://github.com/Blogshot/iotauth-demo. Sites wishing to implement this authentication method would follow this flow.
 1. present user with a seed or allow them to provide a seed.
 2. user backs up seed
 3. site or app stores users' seed as well.
