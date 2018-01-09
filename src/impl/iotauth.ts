@@ -20,14 +20,14 @@ export class IotAuth implements IIotAuth {
     this.duration = duration;
   }
   public async isTransactionValid(validationCode?: string): Promise<boolean> {
-    const receiveSeed = await this.getSeed();
-    const accountData: any = await this.getAccountData(receiveSeed);
-    const transferObj = accountData.transfers.pop();
-    const transfer = transferObj[0];
-    const previousAddresses = accountData.transfers.map(
-      (myTransfer: any) => myTransfer[0].address
-    );
     try {
+      const receiveSeed = await this.getSeed();
+      const accountData: any = await this.getAccountData(receiveSeed);
+      const transferObj = accountData.transfers.pop();
+      const transfer = transferObj[0];
+      const previousAddresses = accountData.transfers.map(
+        (myTransfer: any) => myTransfer[0].address
+      );
       let code = this.iotaClient.utils.extractJson(transferObj);
       code = JSON.parse(code);
       const isValidAddress =
