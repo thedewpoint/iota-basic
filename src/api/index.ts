@@ -1,1 +1,1 @@
-export { IIotAuth } from './iotauth-api';
+export {IIota} from './iota';
