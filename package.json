@@ -1,9 +1,9 @@
 {
-  "name": "iota-auth",
-  "version": "1.2.2",
-  "description": "2fa module using iota's tangle as the backend",
+  "name": "iota-basic",
+  "version": "1.0.0",
+  "description": "a library for basic interactions with the iota tangle",
   "license": "MIT",
-  "repository": "https://github.com/thedewpoint/iotauth.git",
+  "repository": "https://github.com/thedewpoint/iota-basic.git",
   "author": {
     "name": "Daniel Bowden",
     "email": "",
@@ -13,12 +13,10 @@
     "iota",
     "iot",
     "IoT",
-    "authentication",
-    "2fa",
-    "auth",
+    "pow",
     "tangle",
     "miota",
-    "iotauth"
+    "iota-basic"
   ],
   "files": [
     "lib"
