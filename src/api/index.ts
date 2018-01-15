@@ -1,1 +1,1 @@
-export {IIota} from './iota';
+export {IIota} from './IotaBasic';

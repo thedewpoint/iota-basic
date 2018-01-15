@@ -1,5 +1,5 @@
 import * as IOTA from 'iota.lib.js';
-import {IIota} from '../api/iota'
+import {IIota} from '../api/iota-basic'
 
 export class Iota implements IIota {
     getAddresses(): void {
