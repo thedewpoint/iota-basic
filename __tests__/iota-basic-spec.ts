@@ -10,14 +10,26 @@ beforeAll(() => {
   iotaClient = new IOTA({
     provider: 'https://iotanode.us:443',
   });
+  const getNewAddress = jest
+  .fn()
+  .mockImplementation(function(seed, options, callback) {
+    callback(
+      null,
+      "ZYORXWKBB9EBD9EDWTYDUVVGSSJMYDRIWUZOKUGEKUQLZUWKDOWYWDEAFQTCNMXNXBXKJBIIMLEIHMPLZ"
+    );
+  });
+    iotaClient.api.getNewAddress = getNewAddress.bind(
+    iotaClient.api
+  );
+
 });
 
 afterEach(() => {
   jest.resetModules();
 });
-test('should return a receive address', () => {
-  const iota: IIota = new Iota(testSeed);
-  let receiveAddress = iota.getReceiveAddress();
+test('should return a receive address', async () => {
+  const iota: IIota = new Iota(testSeed,"",iotaClient);
+  let receiveAddress = await iota.getReceiveAddress();
   expect(iotaClient.valid.isAddress(receiveAddress)).toBe(true);
 });
 // test('Should generate a new seed if one is not provided', async () => {

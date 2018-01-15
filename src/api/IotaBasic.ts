@@ -1,8 +1,8 @@
 import { IAccountData, ITransfer } from './AccountData';
 
 export interface IIota {
-  getReceiveAddress(): string;
-  sendTransaction(receivingAddress: string, value: number, pow?: boolean): void;
-  getBalance(): number;
-  getAccountData(): IAccountData;
+  getReceiveAddress(): Promise<string>;
+  sendTransaction(receivingAddress: string, value: number, pow?: boolean): Promise<any>;
+  getBalance(): Promise<number>;
+  getAccountData(): Promise<IAccountData>;
 }
