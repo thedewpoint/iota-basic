@@ -1,11 +1,11 @@
-export interface AccountData {
+export interface IAccountData {
   latestAddress: string;
-  addresses?: (string)[] | null;
-  transfers?: ((Transfer)[] | null)[] | null;
-  inputs?: (null)[] | null;
+  addresses?: string[] | null;
+  transfers?: ITransfer[] | null;
+  inputs?: IInput[] | null;
   balance: number;
 }
-export interface Transfer {
+export interface ITransfer {
   hash: string;
   signatureMessageFragment: string;
   address: string;
@@ -24,11 +24,11 @@ export interface Transfer {
   nonce: string;
   persistence: boolean;
 }
-export interface Inputs {
-  inputs?: (Input)[] | null;
+export interface IInputs {
+  inputs?: IInput[] | null;
   totalBalance: number;
 }
-export interface Input {
+export interface IInput {
   address: string;
   balance: number;
   keyIndex: number;

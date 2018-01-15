@@ -1,15 +1,25 @@
-// import { IotAuth } from '../src/index';
-// beforeAll(() => {
-//   jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
-// });
+import * as IOTA from 'iota.lib.js';
+import { Iota, IIota } from '../src/index';
 
-// afterEach(() => {
-//   jest.resetModules();
-// });
-// test('Should create an Iota Client with sanbox node by default', () => {
-//   const iotaAuth = new IotAuth();
-//   expect(iotaAuth.iotaClient).toBeDefined();
-// });
+const testSeed =
+  'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
+var iotaClient;
+
+beforeAll(() => {
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
+  iotaClient = new IOTA({
+    provider: 'https://iotanode.us:443',
+  });
+});
+
+afterEach(() => {
+  jest.resetModules();
+});
+test('should return a receive address', () => {
+  const iota: IIota = new Iota(testSeed);
+  let receiveAddress = iota.getReceiveAddress();
+  expect(iotaClient.valid.isAddress(receiveAddress)).toBe(true);
+});
 // test('Should generate a new seed if one is not provided', async () => {
 //   const iotaAuth = new IotAuth();
 //   let seed = await iotaAuth.getSeed();
