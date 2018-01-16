@@ -11,26 +11,34 @@ beforeAll(() => {
     provider: 'https://iotanode.us:443',
   });
   const getNewAddress = jest
-  .fn()
-  .mockImplementation(function(seed, options, callback) {
-    callback(
-      null,
-      "ZYORXWKBB9EBD9EDWTYDUVVGSSJMYDRIWUZOKUGEKUQLZUWKDOWYWDEAFQTCNMXNXBXKJBIIMLEIHMPLZ"
-    );
-  });
-    iotaClient.api.getNewAddress = getNewAddress.bind(
-    iotaClient.api
-  );
-
+    .fn()
+    .mockImplementation(function(seed, options, callback) {
+      callback(
+        null,
+        'ZYORXWKBB9EBD9EDWTYDUVVGSSJMYDRIWUZOKUGEKUQLZUWKDOWYWDEAFQTCNMXNXBXKJBIIMLEIHMPLZ'
+      );
+    });
+  iotaClient.api.getNewAddress = getNewAddress.bind(iotaClient.api);
+  const getInputs = jest
+    .fn()
+    .mockImplementation(function(seed, options, callback) {
+      callback(null, require('./mock-data/inputs-response.json'));
+    });
+  iotaClient.api.getInputs = getInputs.bind(iotaClient.api);
 });
 
 afterEach(() => {
   jest.resetModules();
 });
 test('should return a receive address', async () => {
-  const iota: IIota = new Iota(testSeed,"",iotaClient);
-  let receiveAddress = await iota.getReceiveAddress();
+  const iota: IIota = new Iota(testSeed, '', iotaClient);
+  let receiveAddress: string = await iota.getReceiveAddress();
   expect(iotaClient.valid.isAddress(receiveAddress)).toBe(true);
+});
+test('should return the account balance', async () => {
+  const iota: IIota = new Iota(testSeed, '', iotaClient);
+  let balance: number = await iota.getBalance();
+  expect(balance).toBe(2);
 });
 // test('Should generate a new seed if one is not provided', async () => {
 //   const iotaAuth = new IotAuth();

@@ -1,27 +1,31 @@
 import * as IOTA from 'iota.lib.js';
-import { IAccountData } from '../api/AccountData';
+import { IAccountData, IInput, IInputs } from '../api/AccountData';
 import { IIota } from '../api/IotaBasic';
 
 export class Iota implements IIota {
   private seed: string;
   private iota: any;
-  constructor(seed: string, node: string = "https://iotanode.us:443",testClient?: any) {
+  constructor(
+    seed: string,
+    node: string = 'https://iotanode.us:443',
+    testClient?: any
+  ) {
     this.seed = seed;
-    if(testClient){
-        this.iota = testClient;
-    } else {
-        this.iota = new IOTA({provider: node});
-    }
+    this.iota = testClient ? testClient : new IOTA({ provider: node });
   }
   public getReceiveAddress(): Promise<string> {
-    return new Promise<string>((resolve,reject)=>{
-        this.iota.api.getNewAddress(this.seed, {},(error: any, address: string)=>{
-            if(error) {
-                reject(error);
-            } else {
-                resolve(address);
-            }
-        });
+    return new Promise<string>((resolve, reject) => {
+      this.iota.api.getNewAddress(
+        this.seed,
+        {},
+        (error: any, address: string) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(address);
+          }
+        }
+      );
     });
   }
   public sendTransaction(
@@ -32,7 +36,15 @@ export class Iota implements IIota {
     throw new Error('Method not implemented.');
   }
   public getBalance(): Promise<number> {
-    throw new Error('Method not implemented.');
+    return new Promise<number>((resolve, reject) => {
+      this.iota.api.getInputs(this.seed, {}, (error: any, inputs: IInputs) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(inputs.totalBalance);
+        }
+      });
+    });
   }
   public getAccountData(): Promise<IAccountData> {
     throw new Error('Method not implemented.');

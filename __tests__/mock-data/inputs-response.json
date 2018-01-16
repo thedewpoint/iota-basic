@@ -1,0 +1,6 @@
+{ "inputs":
+   [ { "address": "MUSHPHILFVALUBYFD9OMEGJAZHVGS9CJNWZS9HMHHR9XNCMZOTTTNDNCDNNAYFGDSUBSKEIMPTQGSJJZC",
+       "balance": 1,
+       "keyIndex": 0,
+       "security": 2 } ],
+  "totalBalance": 2 }
