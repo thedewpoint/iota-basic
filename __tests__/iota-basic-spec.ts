@@ -1,5 +1,6 @@
 import * as IOTA from 'iota.lib.js';
 import { Iota, IIota } from '../src/index';
+import { IAccountData } from '../src/api/AccountData';
 
 const testSeed =
   'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
@@ -25,6 +26,12 @@ beforeAll(() => {
       callback(null, require('./mock-data/inputs-response.json'));
     });
   iotaClient.api.getInputs = getInputs.bind(iotaClient.api);
+  const getAccountData = jest
+    .fn()
+    .mockImplementation(function(seed, options, callback) {
+      callback(null, require('./mock-data/account-data-response.json'));
+    });
+  iotaClient.api.getAccountData = getAccountData.bind(iotaClient.api);
 });
 
 afterEach(() => {
@@ -39,6 +46,19 @@ test('should return the account balance', async () => {
   const iota: IIota = new Iota(testSeed, '', iotaClient);
   let balance: number = await iota.getBalance();
   expect(balance).toBe(2);
+});
+test('should return account data correctly', async () => {
+  const iota: IIota = new Iota(testSeed, '', iotaClient);
+  let accountData: IAccountData = await iota.getAccountData();
+  expect(accountData.balance).toBe(0);
+  expect(accountData.latestAddress).toBe(
+    'QMGKMQIJMVOYXOTYOJTIFQVLHTWDTKWELBQMIVGHS9HAETZYERBVQWXIQFKI9CYIEZJMUXBRZHKHETTGY'
+  );
+  expect(accountData.transfers.length).toBe(2);
+  expect(accountData.inputs.length).toBe(0);
+  expect(accountData.transfers[0][0].hash).toBe(
+    'PLMTQUAD9SVHLEEDGMGJUGGZKJXPXGCB9GNYLNVYQEYKZRLDJJNDQFWPRAHNWBXRKJIMRZZCVQTK99999'
+  );
 });
 // test('Should generate a new seed if one is not provided', async () => {
 //   const iotaAuth = new IotAuth();

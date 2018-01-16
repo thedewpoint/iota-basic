@@ -47,6 +47,18 @@ export class Iota implements IIota {
     });
   }
   public getAccountData(): Promise<IAccountData> {
-    throw new Error('Method not implemented.');
+    return new Promise<IAccountData>((resolve, reject) => {
+      this.iota.api.getAccountData(
+        this.seed,
+        {},
+        (error: any, accountData: IAccountData) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(accountData);
+          }
+        }
+      );
+    });
   }
 }
