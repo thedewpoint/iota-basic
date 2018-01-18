@@ -36,6 +36,8 @@
     "watch:test": "jest --watch"
   },
   "dependencies": {
+    "ccurl.interface.js": "0.0.6",
+    "curl.lib.js": "^1.0.22",
     "iota-seed-generator": "^1.0.0",
     "iota.lib.js": "^0.4.6",
     "moment": "^2.20.1"

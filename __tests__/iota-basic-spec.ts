@@ -1,6 +1,7 @@
 import * as IOTA from 'iota.lib.js';
 import { Iota, IIota } from '../src/index';
 import { IAccountData } from '../src/api/AccountData';
+import { CurlHash } from '../src/impl/CurlHash';
 
 const testSeed =
   'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
@@ -59,6 +60,11 @@ test('should return account data correctly', async () => {
   expect(accountData.transfers[0][0].hash).toBe(
     'PLMTQUAD9SVHLEEDGMGJUGGZKJXPXGCB9GNYLNVYQEYKZRLDJJNDQFWPRAHNWBXRKJIMRZZCVQTK99999'
   );
+});
+test('should return arch', () => {
+  let test: CurlHash = new CurlHash();
+  let arch = test.getOs();
+  expect(arch).toBe('test');
 });
 // test('Should generate a new seed if one is not provided', async () => {
 //   const iotaAuth = new IotAuth();
