@@ -1,95 +1,116 @@
+import * as curl from 'curl.lib.js';
 import { ICurlHash } from '../api/CurlHash';
-var curl = require('curl.lib.js');
 
-export default class CurlHashWebGl implements ICurlHash {
-  private MAX_TIMESTAMP_VALUE: number = (Math.pow(3,27) - 1) / 2;
+export class CurlHashWebGl implements ICurlHash {
+  private MAX_TIMESTAMP_VALUE: number = (Math.pow(3, 27) - 1) / 2;
   private iota: any;
   public init(iota: any): void {
     this.iota = iota;
     iota.api.attachToTangle = this.localAttachToTangle;
     iota.api.__proto__.attachToTangle = this.localAttachToTangle;
   }
- private localAttachToTangle (trunkTransaction: any, branchTransaction: any, minWeightMagnitude: number, trytes: any, callback: any) :void {
-  const that = this;  
-  const ccurlHashing = function(trunkTransaction: any, branchTransaction:any , minWeightMagnitude: number, trytes: any, callback:any) {
-        var finalBundleTrytes: any[] = [];
-        var previousTxHash: any;
-        var i = 0;
+  private localAttachToTangle(
+    trunkTransactionLocal: any,
+    branchTransactionLocal: any,
+    minWeightMagnitudeLocal: number,
+    trytesLocal: any,
+    callbackLocal: any
+  ): void {
+    const ccurlHashing = (
+      trunkTransaction: any,
+      branchTransaction: any,
+      minWeightMagnitude: number,
+      trytes: any,
+      callback: any
+    ) => {
+      const finalBundleTrytes: any[] = [];
+      let previousTxHash: any;
+      let i = 0;
 
-        function loopTrytes() {
-            getBundleTrytes(trytes[i], function(error: any) {
-                if (error) {
-                    return callback(error);
-                } else {
-                    i++;
-                    if (i < trytes.length) {
-                        loopTrytes();
-                    } else {
-                        // reverse the order so that it's ascending from currentIndex
-                        return callback(null, finalBundleTrytes.reverse());
-                    }
-                }
-            });
-        }
-
-        function getBundleTrytes(thisTrytes: any, callback: any) {
-            // PROCESS LOGIC:
-            // Start with last index transaction
-            // Assign it the trunk / branch which the user has supplied
-            // IF there is a bundle, chain  the bundle transactions via
-            // trunkTransaction together
-
-            var txObject = that.iota.utils.transactionObject(thisTrytes);
-            txObject.tag = txObject.obsoleteTag;
-            txObject.attachmentTimestamp = Date.now();
-            txObject.attachmentTimestampLowerBound = 0;
-            txObject.attachmentTimestampUpperBound = that.MAX_TIMESTAMP_VALUE;
-            // If this is the first transaction, to be processed
-            // Make sure that it's the last in the bundle and then
-            // assign it the supplied trunk and branch transactions
-            if (!previousTxHash) {
-                // Check if last transaction in the bundle
-                if (txObject.lastIndex !== txObject.currentIndex) {
-                    return callback(new Error("Wrong bundle order. The bundle should be ordered in descending order from currentIndex"));
-                }
-
-                txObject.trunkTransaction = trunkTransaction;
-                txObject.branchTransaction = branchTransaction;
+      const loopTrytes = () => {
+        getBundleTrytes(trytes[i], (error: any) => {
+          if (error) {
+            return callback(error);
+          } else {
+            i++;
+            if (i < trytes.length) {
+              loopTrytes();
             } else {
-                // Chain the bundle together via the trunkTransaction (previous tx in the bundle)
-                // Assign the supplied trunkTransaciton as branchTransaction
-                txObject.trunkTransaction = previousTxHash;
-                txObject.branchTransaction = trunkTransaction;
+              // reverse the order so that it's ascending from currentIndex
+              return callback(null, finalBundleTrytes.reverse());
             }
+          }
+        });
+      };
 
-            var newTrytes = that.iota.utils.transactionTrytes(txObject);
+      const getBundleTrytes = (thisTrytes: any, callbackBudle: any) => {
+        // PROCESS LOGIC:
+        // Start with last index transaction
+        // Assign it the trunk / branch which the user has supplied
+        // IF there is a bundle, chain  the bundle transactions via
+        // trunkTransaction together
 
-            curl.pow({trytes: newTrytes, minWeight: minWeightMagnitude}).then((nonce: any)=> {
-                var returnedTrytes = newTrytes.substr(0, 2673-81).concat(nonce);
-                var newTxObject= that.iota.utils.transactionObject(returnedTrytes);
+        const txObject = this.iota.utils.transactionObject(thisTrytes);
+        txObject.tag = txObject.obsoleteTag;
+        txObject.attachmentTimestamp = Date.now();
+        txObject.attachmentTimestampLowerBound = 0;
+        txObject.attachmentTimestampUpperBound = this.MAX_TIMESTAMP_VALUE;
+        // If this is the first transaction, to be processed
+        // Make sure that it's the last in the bundle and then
+        // assign it the supplied trunk and branch transactions
+        if (!previousTxHash) {
+          // Check if last transaction in the bundle
+          if (txObject.lastIndex !== txObject.currentIndex) {
+            return callbackBudle(
+              new Error(
+                'Wrong bundle order. The bundle should be ordered in descending order from currentIndex'
+              )
+            );
+          }
 
-                // Assign the previousTxHash to this tx
-                var txHash = newTxObject.hash;
-                previousTxHash = txHash;
-
-                finalBundleTrytes.push(returnedTrytes);
-                callback(null);
-            }).catch(callback);
-        }
-        loopTrytes()
-    }
-
-    ccurlHashing(trunkTransaction, branchTransaction, minWeightMagnitude, trytes, (error:any, success:any) =>{
-        if (error) {
-            console.log(error);
+          txObject.trunkTransaction = trunkTransaction;
+          txObject.branchTransaction = branchTransaction;
         } else {
-            console.log(success);
+          // Chain the bundle together via the trunkTransaction (previous tx in the bundle)
+          // Assign the supplied trunkTransaciton as branchTransaction
+          txObject.trunkTransaction = previousTxHash;
+          txObject.branchTransaction = trunkTransaction;
         }
-        if (callback) {
-            return callback(error, success);
+
+        const newTrytes = this.iota.utils.transactionTrytes(txObject);
+
+        curl
+          .pow({ trytes: newTrytes, minWeight: minWeightMagnitude })
+          .then((nonce: any) => {
+            const returnedTrytes = newTrytes.substr(0, 2673 - 81).concat(nonce);
+            const newTxObject = this.iota.utils.transactionObject(
+              returnedTrytes
+            );
+
+            // Assign the previousTxHash to this tx
+            const txHash = newTxObject.hash;
+            previousTxHash = txHash;
+
+            finalBundleTrytes.push(returnedTrytes);
+            callbackBudle(null);
+          })
+          .catch(callbackBudle);
+      };
+      loopTrytes();
+    };
+
+    ccurlHashing(
+      trunkTransactionLocal,
+      branchTransactionLocal,
+      minWeightMagnitudeLocal,
+      trytesLocal,
+      (error: any, success: any) => {
+        if (callbackLocal) {
+          return callbackLocal(error, success);
         } else {
-            return success;
+          return success;
         }
-    })
-}
+      }
+    );
+  }
 }

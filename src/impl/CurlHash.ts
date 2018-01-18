@@ -2,7 +2,7 @@ import * as ccurl from 'ccurl.interface.js';
 import * as path from 'path';
 import { ICurlHash } from '../api/CurlHash';
 
-export default class CurlHash implements ICurlHash {
+export class CurlHash implements ICurlHash {
   private ccurlPath: string = path.join(__dirname, '..', 'binaries', 'mac');
   public init(iota: any): void {
     iota.api.attachToTangle = this.localAttachToTangle;

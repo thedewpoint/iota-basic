@@ -5,9 +5,11 @@ const isNode = typeof window === 'undefined';
 export default class CurlFactory {
   public static getCurlHasher(): ICurlHash {
     if (isNode) {
-      return require('./CurlHash');
+      const CurlHash = require('./CurlHash').CurlHash;
+      return new CurlHash();
     } else {
-      return require('./CurlHashWebGl');
+      const CurlHashWebGl = require('./CurlHashWebGl').CurlHashWebGl;
+      return new CurlHashWebGl();
     }
   }
 }
