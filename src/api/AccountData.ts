@@ -34,3 +34,8 @@ export interface IInput {
   keyIndex: number;
   security: number;
 }
+export interface ITransaction {
+  address: string;
+  value: number;
+  message: string;
+}

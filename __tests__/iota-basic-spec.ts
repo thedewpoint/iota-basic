@@ -1,5 +1,5 @@
 import * as IOTA from 'iota.lib.js';
-import { Iota, IIota } from '../src/index';
+import { Iota, IIotaBasic } from '../src/index';
 import { CurlHash } from '../src/impl/CurlHash';
 import { CurlHashWebGl } from '../src/impl/CurlHashWebGl';
 import { IAccountData } from '../src/api/AccountData';
@@ -41,17 +41,17 @@ afterEach(() => {
   // jest.resetModules();
 });
 test('should return a receive address', async () => {
-  const iota: IIota = new Iota(testSeed, '', iotaClient);
+  const iota: IIotaBasic = new Iota(testSeed, '', iotaClient);
   let receiveAddress: string = await iota.getReceiveAddress();
   expect(iotaClient.valid.isAddress(receiveAddress)).toBe(true);
 });
 test('should return the account balance', async () => {
-  const iota: IIota = new Iota(testSeed, '', iotaClient);
+  const iota: IIotaBasic = new Iota(testSeed, '', iotaClient);
   let balance: number = await iota.getBalance();
   expect(balance).toBe(2);
 });
 test('should return account data correctly', async () => {
-  const iota: IIota = new Iota(testSeed, '', iotaClient);
+  const iota: IIotaBasic = new Iota(testSeed, '', iotaClient);
   let accountData: IAccountData = await iota.getAccountData();
   expect(accountData.balance).toBe(0);
   expect(accountData.latestAddress).toBe(
@@ -69,10 +69,12 @@ test('use ccurl implementation when applicable', async () => {
   expect(ccurlProvider instanceof CurlHash).toBe(true);
   expect(ccurlProvider instanceof CurlHashWebGl).toBe(false);
 });
+test('should generate a valid checksum for a seed', async () => {
+  const iota = new Iota(testSeed, '', iotaClient);
+  let checksum = iota.getChecksum();
+  expect(checksum).toBe('ZUA');
+});
 test('use webgl2 ccurl implementation when applicable', async () => {
-  // Object.defineProperty(document, 'createElement', {
-  //   value: (type) =>{{getContext: (type)=>{{}}}},
-  // });
   global.document = {};
   global.document.createElement = type => {
     return {

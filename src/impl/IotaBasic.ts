@@ -1,10 +1,10 @@
 import * as IOTA from 'iota.lib.js';
 import { IAccountData, IInput, IInputs } from '../api/AccountData';
 import { ICurlHash } from '../api/CurlHash';
-import { IIota } from '../api/IotaBasic';
+import { IIotaBasic } from '../api/IotaBasic';
 import CurlFactory from './CurlFactory';
 
-export class Iota implements IIota {
+export class Iota implements IIotaBasic {
   public readonly ccurlProvider: ICurlHash;
   private seed: string;
   private iota: any;
@@ -65,5 +65,8 @@ export class Iota implements IIota {
         }
       );
     });
+  }
+  public getChecksum(): string {
+    return this.iota.utils.addChecksum(this.seed, 3, false).substr(-3);
   }
 }
