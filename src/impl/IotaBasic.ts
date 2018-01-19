@@ -1,5 +1,10 @@
 import * as IOTA from 'iota.lib.js';
-import { IAccountData, IInput, IInputs } from '../api/AccountData';
+import {
+  IAccountData,
+  IInput,
+  IInputs,
+  ITransaction,
+} from '../api/AccountData';
 import { ICurlHash } from '../api/CurlHash';
 import { IIotaBasic } from '../api/IotaBasic';
 import CurlFactory from './CurlFactory';
@@ -36,9 +41,28 @@ export class Iota implements IIotaBasic {
   public sendTransaction(
     receivingAddress: string,
     value: number,
-    pow?: boolean | undefined
+    pow: boolean = true,
+    data?: any
   ): Promise<any> {
-    throw new Error('Method not implemented.');
+    return new Promise<any>((resolve, reject) => {
+      const message = data
+        ? this.iota.utils.toTrytes(JSON.stringify(data))
+        : '';
+      const transaction: ITransaction = {
+        address: receivingAddress,
+        message,
+        value,
+      };
+      this.iota.api.sendTransfer(
+        this.seed,
+        3,
+        14,
+        transaction,
+        (e: any, success: any) => {
+          resolve(success);
+        }
+      );
+    });
   }
   public getBalance(): Promise<number> {
     return new Promise<number>((resolve, reject) => {

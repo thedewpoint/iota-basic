@@ -5,7 +5,8 @@ export interface IIotaBasic {
   sendTransaction(
     receivingAddress: string,
     value: number,
-    pow?: boolean
+    pow: boolean,
+    data?: any
   ): Promise<any>;
   getChecksum(): string;
   getBalance(): Promise<number>;
