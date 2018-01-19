@@ -2,7 +2,7 @@
   "name": "iota-basic",
   "version": "1.0.0",
   "description": "a library for basic interactions with the iota tangle",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "repository": "https://github.com/thedewpoint/iota-basic.git",
   "author": {
     "name": "Daniel Bowden",
