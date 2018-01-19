@@ -53,11 +53,12 @@ export class Iota implements IIotaBasic {
         message,
         value,
       };
+      const transactions: ITransaction[] = [transaction];
       this.iota.api.sendTransfer(
         this.seed,
         3,
         14,
-        transaction,
+        transactions,
         (e: any, success: any) => {
           resolve(success);
         }

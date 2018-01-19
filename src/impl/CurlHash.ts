@@ -3,7 +3,7 @@ import * as path from 'path';
 import { ICurlHash } from '../api/CurlHash';
 
 export class CurlHash implements ICurlHash {
-  private ccurlPath: string = path.join(__dirname, '..', 'binaries', 'mac');
+  // private ccurlPath: string = path.join(__dirname, '..', '..', 'binaries', 'mac');
   public init(iota: any): void {
     iota.api.attachToTangle = this.localAttachToTangle;
     iota.api.__proto__.attachToTangle = this.localAttachToTangle;
@@ -15,12 +15,19 @@ export class CurlHash implements ICurlHash {
     trytes: any,
     callback: any
   ): void {
+    const ccurlPath: string = path.join(
+      __dirname,
+      '..',
+      '..',
+      'binaries',
+      'mac'
+    );
     ccurl(
       trunkTransaction,
       branchTransaction,
       minWeightMagnitude,
       trytes,
-      this.ccurlPath,
+      ccurlPath,
       (error: any, success: any) => {
         if (callback) {
           return callback(error, success);
