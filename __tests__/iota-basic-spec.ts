@@ -1,6 +1,9 @@
 import * as IOTA from 'iota.lib.js';
 import { Iota, IIota } from '../src/index';
+import { CurlHash } from '../src/impl/CurlHash';
+import { CurlHashWebGl } from '../src/impl/CurlHashWebGl';
 import { IAccountData } from '../src/api/AccountData';
+import { ICurlHash } from '../src/api/CurlHash';
 
 const testSeed =
   'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
@@ -60,7 +63,29 @@ test('should return account data correctly', async () => {
     'PLMTQUAD9SVHLEEDGMGJUGGZKJXPXGCB9GNYLNVYQEYKZRLDJJNDQFWPRAHNWBXRKJIMRZZCVQTK99999'
   );
 });
-
+test('use ccurl implementation when applicable', async () => {
+  const iota = new Iota(testSeed, '', iotaClient);
+  let ccurlProvider: ICurlHash = iota.ccurlProvider;
+  expect(ccurlProvider instanceof CurlHash).toBe(true);
+  expect(ccurlProvider instanceof CurlHashWebGl).toBe(false);
+});
+test('use webgl2 ccurl implementation when applicable', async () => {
+  // Object.defineProperty(document, 'createElement', {
+  //   value: (type) =>{{getContext: (type)=>{{}}}},
+  // });
+  global.document = {};
+  global.document.createElement = type => {
+    return {
+      getContext: type => {
+        return true;
+      },
+    };
+  };
+  const iota = new Iota(testSeed, '', iotaClient);
+  let ccurlProvider: ICurlHash = iota.ccurlProvider;
+  expect(ccurlProvider instanceof CurlHash).toBe(false);
+  expect(ccurlProvider instanceof CurlHashWebGl).toBe(true);
+});
 // test('Should generate a new seed if one is not provided', async () => {
 //   const iotaAuth = new IotAuth();
 //   let seed = await iotaAuth.getSeed();

@@ -1,15 +1,22 @@
 import { ICurlHash } from '../api/CurlHash';
 
-const isNode = typeof window === 'undefined';
-
 export default class CurlFactory {
   public static getCurlHasher(): ICurlHash {
-    if (isNode) {
+    if (this.isNode()) {
       const CurlHash = require('./CurlHash').CurlHash;
       return new CurlHash();
     } else {
       const CurlHashWebGl = require('./CurlHashWebGl').CurlHashWebGl;
       return new CurlHashWebGl();
+    }
+  }
+  private static isNode() {
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl2');
+      return gl === null;
+    } catch (e) {
+      return true;
     }
   }
 }

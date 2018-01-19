@@ -5,6 +5,7 @@ import { IIota } from '../api/IotaBasic';
 import CurlFactory from './CurlFactory';
 
 export class Iota implements IIota {
+  public readonly ccurlProvider: ICurlHash;
   private seed: string;
   private iota: any;
   constructor(
@@ -14,8 +15,8 @@ export class Iota implements IIota {
   ) {
     this.seed = seed;
     this.iota = testClient ? testClient : new IOTA({ provider: node });
-    const ccurlProvider: ICurlHash = CurlFactory.getCurlHasher();
-    ccurlProvider.init(this.iota);
+    this.ccurlProvider = CurlFactory.getCurlHasher();
+    this.ccurlProvider.init(this.iota);
   }
   public getReceiveAddress(): Promise<string> {
     return new Promise<string>((resolve, reject) => {
