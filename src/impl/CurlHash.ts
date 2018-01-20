@@ -29,7 +29,6 @@ export class CurlHash implements ICurlHash {
       trytes,
       ccurlPath,
       (error: any, success: any) => {
-        console.log("success",success);
         if (callback) {
           return callback(error, success);
         } else {

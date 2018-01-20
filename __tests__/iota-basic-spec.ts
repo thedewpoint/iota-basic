@@ -5,7 +5,10 @@ import { CurlHashWebGl } from '../src/impl/CurlHashWebGl';
 import { IAccountData } from '../src/api/AccountData';
 import { ICurlHash } from '../src/api/CurlHash';
 import * as ccurl from 'ccurl.interface.js';
+import * as curl from 'curl.lib.js';
+
 jest.mock('ccurl.interface.js');
+jest.mock('curl.lib.js');
 
 const testSeed =
   'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
@@ -73,13 +76,23 @@ test('use ccurl implementation when applicable', async () => {
 });
 test('Should call the localAttach of CurlHash when on node when attachToTangle is called', async () => {
   const iota = new Iota(testSeed, '', iotaClient);
-  ccurl.mockImplementationOnce(( trunkTransaction,
-    branchTransaction,
-    minWeightMagnitude,
-    trytes,
-    ccurlPath,callback) => {callback(require('./mock-data/successresponse.json').data)});
-    const result = await iota.sendTransaction('ZYORXWKBB9EBD9EDWTYDUVVGSSJMYDRIWUZOKUGEKUQLZUWKDOWYWDEAFQTCNMXNXBXKJBIIMLEIHMPLZ',1);
-  
+  ccurl.mockImplementationOnce(
+    (
+      trunkTransaction,
+      branchTransaction,
+      minWeightMagnitude,
+      trytes,
+      ccurlPath,
+      callback
+    ) => {
+      callback(require('./mock-data/successresponse.json').data);
+    }
+  );
+  const result = await iota.sendTransaction(
+    'ZYORXWKBB9EBD9EDWTYDUVVGSSJMYDRIWUZOKUGEKUQLZUWKDOWYWDEAFQTCNMXNXBXKJBIIMLEIHMPLZ',
+    1
+  );
+
   expect(ccurl).toHaveBeenCalled();
 });
 test('should generate a valid checksum for a seed', async () => {
@@ -102,6 +115,28 @@ test('use webgl2 ccurl implementation when applicable', async () => {
   expect(ccurlProvider instanceof CurlHashWebGl).toBe(true);
 });
 
+test('Should call the localAttach of CurlHashWebGl when on node when attachToTangle is called', async () => {
+  global.document = {};
+  global.document.createElement = type => {
+    return {
+      getContext: type => {
+        return true;
+      },
+    };
+  };
+  const iota = new Iota(testSeed, '', iotaClient);
+  const spy = spyOn(curl, 'pow');
+  spy.and.callFake(() => {
+    return new Promise((resolve, reject) => {
+      resolve('9XA9999999CJK99999999999999');
+    });
+  });
+  const result = await iota.sendTransaction(
+    'ZYORXWKBB9EBD9EDWTYDUVVGSSJMYDRIWUZOKUGEKUQLZUWKDOWYWDEAFQTCNMXNXBXKJBIIMLEIHMPLZ',
+    1
+  );
+  expect(spy).toHaveBeenCalled;
+});
 // test('Should generate a verification code', async () => {
 //   const iotaAuth = new IotAuth();
 //   let code = await iotaAuth.generateValidationCode();
