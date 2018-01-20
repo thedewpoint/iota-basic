@@ -1,5 +1,3 @@
-
-
 export interface ISeedGenerator {
-    generateSeed(): Promise<string>;
+  generateSeed(): Promise<string>;
 }
