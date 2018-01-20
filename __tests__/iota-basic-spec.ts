@@ -4,6 +4,8 @@ import { CurlHash } from '../src/impl/CurlHash';
 import { CurlHashWebGl } from '../src/impl/CurlHashWebGl';
 import { IAccountData } from '../src/api/AccountData';
 import { ICurlHash } from '../src/api/CurlHash';
+import * as ccurl from 'ccurl.interface.js';
+jest.mock('ccurl.interface.js');
 
 const testSeed =
   'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
@@ -65,9 +67,20 @@ test('should return account data correctly', async () => {
 });
 test('use ccurl implementation when applicable', async () => {
   const iota = new Iota(testSeed, '', iotaClient);
-  let ccurlProvider: ICurlHash = iota.ccurlProvider;
+  const ccurlProvider: ICurlHash = iota.ccurlProvider;
   expect(ccurlProvider instanceof CurlHash).toBe(true);
   expect(ccurlProvider instanceof CurlHashWebGl).toBe(false);
+});
+test('Should call the localAttach of CurlHash when on node when attachToTangle is called', async () => {
+  const iota = new Iota(testSeed, '', iotaClient);
+  ccurl.mockImplementationOnce(( trunkTransaction,
+    branchTransaction,
+    minWeightMagnitude,
+    trytes,
+    ccurlPath,callback) => {callback(require('./mock-data/successresponse.json').data)});
+    const result = await iota.sendTransaction('ZYORXWKBB9EBD9EDWTYDUVVGSSJMYDRIWUZOKUGEKUQLZUWKDOWYWDEAFQTCNMXNXBXKJBIIMLEIHMPLZ',1);
+  
+  expect(ccurl).toHaveBeenCalled();
 });
 test('should generate a valid checksum for a seed', async () => {
   const iota = new Iota(testSeed, '', iotaClient);
@@ -88,11 +101,7 @@ test('use webgl2 ccurl implementation when applicable', async () => {
   expect(ccurlProvider instanceof CurlHash).toBe(false);
   expect(ccurlProvider instanceof CurlHashWebGl).toBe(true);
 });
-// test('Should generate a new seed if one is not provided', async () => {
-//   const iotaAuth = new IotAuth();
-//   let seed = await iotaAuth.getSeed();
-//   expect(iotaAuth.iotaClient.valid.isTrytes(seed, 81)).toBe(true);
-// });
+
 // test('Should generate a verification code', async () => {
 //   const iotaAuth = new IotAuth();
 //   let code = await iotaAuth.generateValidationCode();
