@@ -1,3 +1,6 @@
+/**
+ * Represents AccountData object returned by iota.lib.js getAccountData.
+ */
 export interface IAccountData {
   latestAddress: string;
   addresses?: string[] | null;
@@ -5,6 +8,9 @@ export interface IAccountData {
   inputs?: IInput[] | null;
   balance: number;
 }
+/**
+ * Represents Transfers object returned by iota.lib.js transfers.
+ */
 export interface ITransfer {
   hash: string;
   signatureMessageFragment: string;
@@ -24,16 +30,26 @@ export interface ITransfer {
   nonce: string;
   persistence: boolean;
 }
+/**
+ * Represents Inputs wrapper object returned by iota.lib.js getInputs.
+ */
 export interface IInputs {
   inputs?: IInput[] | null;
   totalBalance: number;
 }
+
+/**
+ * Represents Input object returned by iota.lib.js getInputs.
+ */
 export interface IInput {
   address: string;
   balance: number;
   keyIndex: number;
   security: number;
 }
+/**
+ * Represents transaction object passed to attachToTangle.
+ */
 export interface ITransaction {
   address: string;
   value: number;

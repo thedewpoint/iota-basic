@@ -1,5 +1,8 @@
 import { IAccountData, ITransfer } from './AccountData';
 
+/**
+ * Interface describing the basic methods exposed by any implementation of IotaBasic API
+ */
 export interface IIotaBasic {
   getReceiveAddress(): Promise<string>;
   generateSeed(): Promise<string>;

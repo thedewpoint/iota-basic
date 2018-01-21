@@ -1,8 +1,17 @@
 import * as crypto from 'crypto';
 import { ISeedGenerator } from '../api/SeedGenerator';
 
+/**
+ * Seed generator using the node crypto library which uses system entropy to generate randomness
+ * @class
+ */
 export class SeedGeneratorNode implements ISeedGenerator {
   private validChars: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ9';
+  /**
+   * returns a valid random seed
+   *
+   */
+
   public generateSeed(): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       crypto.randomBytes(300, (err, buf) => {

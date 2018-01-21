@@ -11,12 +11,22 @@ import { ISeedGenerator } from '../api/SeedGenerator';
 import CurlFactory from './CurlFactory';
 import SeedGeneratorFactory from './SeedGeneratorFactory';
 
+/**
+ * implementation of the IIotaBasic interface
+ */
 export class Iota implements IIotaBasic {
   public readonly ccurlProvider: ICurlHash;
   public readonly seedGenerator: ISeedGenerator;
 
   private seed: string;
   private iota: any;
+  /**
+   * init function takes the iotaclient and overrides attachToTangle
+   * @constructor
+   * @param {string} seed - the seed to initialize with.
+   * @param {string} node - the uri for the provider within iota.lib.js client, defaults to 'https://iotanode.us:443'
+   * @param {any} testClient - this parameter is strictly to make writing unit tests against this class easier and is not meant to be used'
+   */
   constructor(
     seed: string,
     node: string = 'https://iotanode.us:443',
@@ -28,6 +38,11 @@ export class Iota implements IIotaBasic {
     this.seedGenerator = SeedGeneratorFactory.getSeedGenerator();
     this.ccurlProvider.init(this.iota);
   }
+
+  /**
+   * Generate the most recent receive address with no send transactions on it
+   *
+   */
   public getReceiveAddress(): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       this.iota.api.getNewAddress(
@@ -43,9 +58,20 @@ export class Iota implements IIotaBasic {
       );
     });
   }
+  /**
+   * Generate a secure seed using an implementation of SeedGenerator
+   *
+   */
   public generateSeed(): Promise<string> {
     return this.seedGenerator.generateSeed();
   }
+  /**
+   * sendTransaction for sending value from your seed to another address or just sending data
+   * @param {string} receiveAddress - the address to send to
+   * @param {number} value - the amount in iota to send
+   * @param {boolean} pow - this parameter assumes you want to do pow locally and if not you can override it to false
+   * @param {any} data - json object representing any data you want to send with the transaction
+   */
   public sendTransaction(
     receivingAddress: string,
     value: number,
@@ -73,6 +99,9 @@ export class Iota implements IIotaBasic {
       );
     });
   }
+  /**
+   * returns the balance of your seed
+   */
   public getBalance(): Promise<number> {
     return new Promise<number>((resolve, reject) => {
       this.iota.api.getInputs(this.seed, {}, (error: any, inputs: IInputs) => {
@@ -84,6 +113,9 @@ export class Iota implements IIotaBasic {
       });
     });
   }
+  /**
+   * returns the account data in the form of IAccountData from iota.lib.js for your seed
+   */
   public getAccountData(): Promise<IAccountData> {
     return new Promise<IAccountData>((resolve, reject) => {
       this.iota.api.getAccountData(
@@ -99,6 +131,9 @@ export class Iota implements IIotaBasic {
       );
     });
   }
+  /**
+   * generate a checksum for the seed to verify you entered it correctly. shamelessly stolen from official wallet
+   */
   public getChecksum(): string {
     return this.iota.utils.addChecksum(this.seed, 3, false).substr(-3);
   }
