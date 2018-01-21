@@ -25,18 +25,22 @@ export class Iota implements IIotaBasic {
    * @constructor
    * @param {string} seed - the seed to initialize with.
    * @param {string} node - the uri for the provider within iota.lib.js client, defaults to 'https://iotanode.us:443'
+   * @param {boolean} pow - this parameter assumes you want to do pow locally and if not you can override it to false
    * @param {any} testClient - this parameter is strictly to make writing unit tests against this class easier and is not meant to be used'
    */
   constructor(
     seed: string,
     node: string = 'https://iotanode.us:443',
-    testClient?: any
+    testClient?: any,
+    pow: boolean = true
   ) {
     this.seed = seed;
     this.iota = testClient ? testClient : new IOTA({ provider: node });
     this.ccurlProvider = CurlFactory.getCurlHasher();
     this.seedGenerator = SeedGeneratorFactory.getSeedGenerator();
-    this.ccurlProvider.init(this.iota);
+    if (pow) {
+      this.ccurlProvider.init(this.iota);
+    }
   }
 
   /**
@@ -69,13 +73,11 @@ export class Iota implements IIotaBasic {
    * sendTransaction for sending value from your seed to another address or just sending data
    * @param {string} receiveAddress - the address to send to
    * @param {number} value - the amount in iota to send
-   * @param {boolean} pow - this parameter assumes you want to do pow locally and if not you can override it to false
    * @param {any} data - json object representing any data you want to send with the transaction
    */
   public sendTransaction(
     receivingAddress: string,
     value: number,
-    pow: boolean = true,
     data?: any
   ): Promise<any> {
     return new Promise<any>((resolve, reject) => {
