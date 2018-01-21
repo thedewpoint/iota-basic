@@ -2,6 +2,7 @@ import * as ccurl from 'ccurl.interface.js';
 import * as path from 'path';
 import { ICurlHash } from '../api/CurlHash';
 
+// attach logic stolen from iotaledger wallet
 export class CurlHash implements ICurlHash {
   public init(iota: any): void {
     iota.api.attachToTangle = this.localAttachToTangle;

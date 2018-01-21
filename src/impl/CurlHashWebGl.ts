@@ -1,6 +1,6 @@
 import * as curl from 'curl.lib.js';
 import { ICurlHash } from '../api/CurlHash';
-
+// attach workaround shamelessly inspired/stolen from transaction spammer https://github.com/pRizz/iota.transactionSpammer.js/blob/9ad59895a846849adf344de9d0d52b0ff83b8e2c/src/transactionSpammer.js#L224
 export class CurlHashWebGl implements ICurlHash {
   private MAX_TIMESTAMP_VALUE: number = (Math.pow(3, 27) - 1) / 2;
   private iota: any;
