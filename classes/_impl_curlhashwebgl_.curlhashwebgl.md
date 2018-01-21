@@ -33,7 +33,7 @@ CurlHashWebGl leverages the webgl2 library in browser through the curl.lib.js de
 
 
 
-*Defined in [impl/CurlHashWebGl.ts:23](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/CurlHashWebGl.ts#L23)*
+*Defined in [impl/CurlHashWebGl.ts:23](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/CurlHashWebGl.ts#L23)*
 
 
 
@@ -65,7 +65,7 @@ ___
 
 *Implementation of [ICurlHash](../interfaces/_api_curlhash_.icurlhash.md).[init](../interfaces/_api_curlhash_.icurlhash.md#init)*
 
-*Defined in [impl/CurlHashWebGl.ts:18](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/CurlHashWebGl.ts#L18)*
+*Defined in [impl/CurlHashWebGl.ts:18](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/CurlHashWebGl.ts#L18)*
 
 
 

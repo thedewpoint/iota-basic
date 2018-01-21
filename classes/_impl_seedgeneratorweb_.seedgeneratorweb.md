@@ -34,7 +34,7 @@ Seed generator using window.crypto library to securely generate a seed logic sha
 
 *Implementation of [ISeedGenerator](../interfaces/_api_seedgenerator_.iseedgenerator.md).[generateSeed](../interfaces/_api_seedgenerator_.iseedgenerator.md#generateseed)*
 
-*Defined in [impl/SeedGeneratorWeb.ts:15](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/SeedGeneratorWeb.ts#L15)*
+*Defined in [impl/SeedGeneratorWeb.ts:15](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/SeedGeneratorWeb.ts#L15)*
 
 
 

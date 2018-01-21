@@ -15,7 +15,7 @@ Represents transaction object passed to attachToTangle.
 
 **●  address**:  *`string`* 
 
-*Defined in [api/AccountData.ts:54](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L54)*
+*Defined in [api/AccountData.ts:54](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L54)*
 
 
 
@@ -29,7 +29,7 @@ ___
 
 **●  message**:  *`string`* 
 
-*Defined in [api/AccountData.ts:56](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L56)*
+*Defined in [api/AccountData.ts:56](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L56)*
 
 
 
@@ -43,7 +43,7 @@ ___
 
 **●  value**:  *`number`* 
 
-*Defined in [api/AccountData.ts:55](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L55)*
+*Defined in [api/AccountData.ts:55](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L55)*
 
 
 

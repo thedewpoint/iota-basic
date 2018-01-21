@@ -15,7 +15,7 @@ Represents Transfers object returned by iota.lib.js transfers.
 
 **●  address**:  *`string`* 
 
-*Defined in [api/AccountData.ts:17](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L17)*
+*Defined in [api/AccountData.ts:17](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L17)*
 
 
 
@@ -29,7 +29,7 @@ ___
 
 **●  attachmentTimestamp**:  *`number`* 
 
-*Defined in [api/AccountData.ts:27](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L27)*
+*Defined in [api/AccountData.ts:27](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L27)*
 
 
 
@@ -43,7 +43,7 @@ ___
 
 **●  attachmentTimestampLowerBound**:  *`number`* 
 
-*Defined in [api/AccountData.ts:28](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L28)*
+*Defined in [api/AccountData.ts:28](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L28)*
 
 
 
@@ -57,7 +57,7 @@ ___
 
 **●  attachmentTimestampUpperBound**:  *`number`* 
 
-*Defined in [api/AccountData.ts:29](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L29)*
+*Defined in [api/AccountData.ts:29](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L29)*
 
 
 
@@ -71,7 +71,7 @@ ___
 
 **●  branchTransaction**:  *`string`* 
 
-*Defined in [api/AccountData.ts:25](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L25)*
+*Defined in [api/AccountData.ts:25](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L25)*
 
 
 
@@ -85,7 +85,7 @@ ___
 
 **●  bundle**:  *`string`* 
 
-*Defined in [api/AccountData.ts:23](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L23)*
+*Defined in [api/AccountData.ts:23](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L23)*
 
 
 
@@ -99,7 +99,7 @@ ___
 
 **●  currentIndex**:  *`number`* 
 
-*Defined in [api/AccountData.ts:21](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L21)*
+*Defined in [api/AccountData.ts:21](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L21)*
 
 
 
@@ -113,7 +113,7 @@ ___
 
 **●  hash**:  *`string`* 
 
-*Defined in [api/AccountData.ts:15](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L15)*
+*Defined in [api/AccountData.ts:15](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L15)*
 
 
 
@@ -127,7 +127,7 @@ ___
 
 **●  lastIndex**:  *`number`* 
 
-*Defined in [api/AccountData.ts:22](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L22)*
+*Defined in [api/AccountData.ts:22](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L22)*
 
 
 
@@ -141,7 +141,7 @@ ___
 
 **●  nonce**:  *`string`* 
 
-*Defined in [api/AccountData.ts:30](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L30)*
+*Defined in [api/AccountData.ts:30](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L30)*
 
 
 
@@ -155,7 +155,7 @@ ___
 
 **●  obsoleteTag**:  *`string`* 
 
-*Defined in [api/AccountData.ts:19](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L19)*
+*Defined in [api/AccountData.ts:19](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L19)*
 
 
 
@@ -169,7 +169,7 @@ ___
 
 **●  persistence**:  *`boolean`* 
 
-*Defined in [api/AccountData.ts:31](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L31)*
+*Defined in [api/AccountData.ts:31](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L31)*
 
 
 
@@ -183,7 +183,7 @@ ___
 
 **●  signatureMessageFragment**:  *`string`* 
 
-*Defined in [api/AccountData.ts:16](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L16)*
+*Defined in [api/AccountData.ts:16](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L16)*
 
 
 
@@ -197,7 +197,7 @@ ___
 
 **●  tag**:  *`string`* 
 
-*Defined in [api/AccountData.ts:26](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L26)*
+*Defined in [api/AccountData.ts:26](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L26)*
 
 
 
@@ -211,7 +211,7 @@ ___
 
 **●  timestamp**:  *`number`* 
 
-*Defined in [api/AccountData.ts:20](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L20)*
+*Defined in [api/AccountData.ts:20](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L20)*
 
 
 
@@ -225,7 +225,7 @@ ___
 
 **●  trunkTransaction**:  *`string`* 
 
-*Defined in [api/AccountData.ts:24](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L24)*
+*Defined in [api/AccountData.ts:24](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L24)*
 
 
 
@@ -239,7 +239,7 @@ ___
 
 **●  value**:  *`number`* 
 
-*Defined in [api/AccountData.ts:18](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L18)*
+*Defined in [api/AccountData.ts:18](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L18)*
 
 
 

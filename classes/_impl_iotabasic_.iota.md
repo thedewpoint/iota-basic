@@ -42,10 +42,10 @@ implementation of the IIotaBasic interface
 <a id="constructor"></a>
 
 
-### ⊕ **new Iota**(seed: *`string`*, node?: *`string`*, testClient?: *`any`*): [Iota](_impl_iotabasic_.iota.md)
+### ⊕ **new Iota**(seed: *`string`*, node?: *`string`*, testClient?: *`any`*, pow?: *`boolean`*): [Iota](_impl_iotabasic_.iota.md)
 
 
-*Defined in [impl/IotaBasic.ts:22](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/IotaBasic.ts#L22)*
+*Defined in [impl/IotaBasic.ts:22](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L22)*
 
 
 
@@ -61,6 +61,7 @@ init function takes the iotaclient and overrides attachToTangle
 | seed | `string`  | - |   the seed to initialize with. |
 | node | `string`  | &quot;https://iotanode.us:443&quot; |   the uri for the provider within iota.lib.js client, defaults to '[https://iotanode.us:443](https://iotanode.us:443)' |
 | testClient | `any`  | - |   this parameter is strictly to make writing unit tests against this class easier and is not meant to be used' |
+| pow | `boolean`  | true |   this parameter assumes you want to do pow locally and if not you can override it to false |
 
 
 
@@ -78,7 +79,7 @@ init function takes the iotaclient and overrides attachToTangle
 
 **●  ccurlProvider**:  *[ICurlHash](../interfaces/_api_curlhash_.icurlhash.md)* 
 
-*Defined in [impl/IotaBasic.ts:18](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/IotaBasic.ts#L18)*
+*Defined in [impl/IotaBasic.ts:18](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L18)*
 
 
 
@@ -92,7 +93,7 @@ ___
 
 **●  iota**:  *`any`* 
 
-*Defined in [impl/IotaBasic.ts:22](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/IotaBasic.ts#L22)*
+*Defined in [impl/IotaBasic.ts:22](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L22)*
 
 
 
@@ -106,7 +107,7 @@ ___
 
 **●  seed**:  *`string`* 
 
-*Defined in [impl/IotaBasic.ts:21](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/IotaBasic.ts#L21)*
+*Defined in [impl/IotaBasic.ts:21](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L21)*
 
 
 
@@ -120,7 +121,7 @@ ___
 
 **●  seedGenerator**:  *[ISeedGenerator](../interfaces/_api_seedgenerator_.iseedgenerator.md)* 
 
-*Defined in [impl/IotaBasic.ts:19](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/IotaBasic.ts#L19)*
+*Defined in [impl/IotaBasic.ts:19](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L19)*
 
 
 
@@ -140,7 +141,7 @@ ___
 
 *Implementation of [IIotaBasic](../interfaces/_api_iotabasic_.iiotabasic.md).[generateSeed](../interfaces/_api_iotabasic_.iiotabasic.md#generateseed)*
 
-*Defined in [impl/IotaBasic.ts:65](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/IotaBasic.ts#L65)*
+*Defined in [impl/IotaBasic.ts:69](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L69)*
 
 
 
@@ -167,7 +168,7 @@ ___
 
 *Implementation of [IIotaBasic](../interfaces/_api_iotabasic_.iiotabasic.md).[getAccountData](../interfaces/_api_iotabasic_.iiotabasic.md#getaccountdata)*
 
-*Defined in [impl/IotaBasic.ts:119](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/IotaBasic.ts#L119)*
+*Defined in [impl/IotaBasic.ts:121](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L121)*
 
 
 
@@ -194,7 +195,7 @@ ___
 
 *Implementation of [IIotaBasic](../interfaces/_api_iotabasic_.iiotabasic.md).[getBalance](../interfaces/_api_iotabasic_.iiotabasic.md#getbalance)*
 
-*Defined in [impl/IotaBasic.ts:105](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/IotaBasic.ts#L105)*
+*Defined in [impl/IotaBasic.ts:107](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L107)*
 
 
 
@@ -221,7 +222,7 @@ ___
 
 *Implementation of [IIotaBasic](../interfaces/_api_iotabasic_.iiotabasic.md).[getChecksum](../interfaces/_api_iotabasic_.iiotabasic.md#getchecksum)*
 
-*Defined in [impl/IotaBasic.ts:137](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/IotaBasic.ts#L137)*
+*Defined in [impl/IotaBasic.ts:139](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L139)*
 
 
 
@@ -248,7 +249,7 @@ ___
 
 *Implementation of [IIotaBasic](../interfaces/_api_iotabasic_.iiotabasic.md).[getReceiveAddress](../interfaces/_api_iotabasic_.iiotabasic.md#getreceiveaddress)*
 
-*Defined in [impl/IotaBasic.ts:46](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/IotaBasic.ts#L46)*
+*Defined in [impl/IotaBasic.ts:50](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L50)*
 
 
 
@@ -269,13 +270,13 @@ ___
 
 ###  sendTransaction
 
-► **sendTransaction**(receivingAddress: *`string`*, value: *`number`*, pow?: *`boolean`*, data?: *`any`*): `Promise`.<`any`>
+► **sendTransaction**(receivingAddress: *`string`*, value: *`number`*, data?: *`any`*): `Promise`.<`any`>
 
 
 
 *Implementation of [IIotaBasic](../interfaces/_api_iotabasic_.iiotabasic.md).[sendTransaction](../interfaces/_api_iotabasic_.iiotabasic.md#sendtransaction)*
 
-*Defined in [impl/IotaBasic.ts:75](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/IotaBasic.ts#L75)*
+*Defined in [impl/IotaBasic.ts:78](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L78)*
 
 
 
@@ -284,12 +285,11 @@ sendTransaction for sending value from your seed to another address or just send
 
 **Parameters:**
 
-| Param | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| receivingAddress | `string`  | - |   - |
-| value | `number`  | - |   the amount in iota to send |
-| pow | `boolean`  | true |   this parameter assumes you want to do pow locally and if not you can override it to false |
-| data | `any`  | - |   json object representing any data you want to send with the transaction |
+| Param | Type | Description |
+| ------ | ------ | ------ |
+| receivingAddress | `string`   |  - |
+| value | `number`   |  the amount in iota to send |
+| data | `any`   |  json object representing any data you want to send with the transaction |
 
 
 

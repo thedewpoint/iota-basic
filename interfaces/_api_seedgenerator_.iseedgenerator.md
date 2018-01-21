@@ -22,7 +22,7 @@ Interface describing the implementation of a SeedGenerator
 
 
 
-*Defined in [api/SeedGenerator.ts:5](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/SeedGenerator.ts#L5)*
+*Defined in [api/SeedGenerator.ts:5](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/SeedGenerator.ts#L5)*
 
 
 

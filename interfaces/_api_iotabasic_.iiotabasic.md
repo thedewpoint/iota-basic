@@ -21,7 +21,7 @@ Interface describing the basic methods exposed by any implementation of IotaBasi
 
 
 
-*Defined in [api/IotaBasic.ts:8](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/IotaBasic.ts#L8)*
+*Defined in [api/IotaBasic.ts:8](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/IotaBasic.ts#L8)*
 
 
 
@@ -43,7 +43,7 @@ ___
 
 
 
-*Defined in [api/IotaBasic.ts:17](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/IotaBasic.ts#L17)*
+*Defined in [api/IotaBasic.ts:16](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/IotaBasic.ts#L16)*
 
 
 
@@ -65,7 +65,7 @@ ___
 
 
 
-*Defined in [api/IotaBasic.ts:16](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/IotaBasic.ts#L16)*
+*Defined in [api/IotaBasic.ts:15](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/IotaBasic.ts#L15)*
 
 
 
@@ -87,7 +87,7 @@ ___
 
 
 
-*Defined in [api/IotaBasic.ts:15](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/IotaBasic.ts#L15)*
+*Defined in [api/IotaBasic.ts:14](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/IotaBasic.ts#L14)*
 
 
 
@@ -109,7 +109,7 @@ ___
 
 
 
-*Defined in [api/IotaBasic.ts:7](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/IotaBasic.ts#L7)*
+*Defined in [api/IotaBasic.ts:7](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/IotaBasic.ts#L7)*
 
 
 
@@ -127,11 +127,11 @@ ___
 
 ###  sendTransaction
 
-► **sendTransaction**(receivingAddress: *`string`*, value: *`number`*, pow: *`boolean`*, data?: *`any`*): `Promise`.<`any`>
+► **sendTransaction**(receivingAddress: *`string`*, value: *`number`*, data?: *`any`*): `Promise`.<`any`>
 
 
 
-*Defined in [api/IotaBasic.ts:9](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/IotaBasic.ts#L9)*
+*Defined in [api/IotaBasic.ts:9](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/IotaBasic.ts#L9)*
 
 
 
@@ -141,7 +141,6 @@ ___
 | ------ | ------ | ------ |
 | receivingAddress | `string`   |  - |
 | value | `number`   |  - |
-| pow | `boolean`   |  - |
 | data | `any`   |  - |
 
 

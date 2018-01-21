@@ -15,7 +15,7 @@ Represents Input object returned by iota.lib.js getInputs.
 
 **●  address**:  *`string`* 
 
-*Defined in [api/AccountData.ts:45](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L45)*
+*Defined in [api/AccountData.ts:45](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L45)*
 
 
 
@@ -29,7 +29,7 @@ ___
 
 **●  balance**:  *`number`* 
 
-*Defined in [api/AccountData.ts:46](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L46)*
+*Defined in [api/AccountData.ts:46](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L46)*
 
 
 
@@ -43,7 +43,7 @@ ___
 
 **●  keyIndex**:  *`number`* 
 
-*Defined in [api/AccountData.ts:47](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L47)*
+*Defined in [api/AccountData.ts:47](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L47)*
 
 
 
@@ -57,7 +57,7 @@ ___
 
 **●  security**:  *`number`* 
 
-*Defined in [api/AccountData.ts:48](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L48)*
+*Defined in [api/AccountData.ts:48](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L48)*
 
 
 

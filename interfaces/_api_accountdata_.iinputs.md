@@ -15,7 +15,7 @@ Represents Inputs wrapper object returned by iota.lib.js getInputs.
 
 **●  inputs**:  *[IInput](_api_accountdata_.iinput.md)[]⎮`null`* 
 
-*Defined in [api/AccountData.ts:37](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L37)*
+*Defined in [api/AccountData.ts:37](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L37)*
 
 
 
@@ -29,7 +29,7 @@ ___
 
 **●  totalBalance**:  *`number`* 
 
-*Defined in [api/AccountData.ts:38](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/api/AccountData.ts#L38)*
+*Defined in [api/AccountData.ts:38](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L38)*
 
 
 

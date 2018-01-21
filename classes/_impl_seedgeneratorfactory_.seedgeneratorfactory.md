@@ -28,7 +28,7 @@ Factory for returning an implementation of ISeedGenerator depending on whether t
 
 
 
-*Defined in [impl/SeedGeneratorFactory.ts:11](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/SeedGeneratorFactory.ts#L11)*
+*Defined in [impl/SeedGeneratorFactory.ts:11](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/SeedGeneratorFactory.ts#L11)*
 
 
 
@@ -53,7 +53,7 @@ ___
 
 
 
-*Defined in [impl/SeedGeneratorFactory.ts:24](https://github.com/thedewpoint/iota-basic/blob/e0d2d53/src/impl/SeedGeneratorFactory.ts#L24)*
+*Defined in [impl/SeedGeneratorFactory.ts:24](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/SeedGeneratorFactory.ts#L24)*
 
 
 
