@@ -6,6 +6,8 @@ import { IAccountData } from '../src/api/AccountData';
 import { ICurlHash } from '../src/api/CurlHash';
 import * as ccurl from 'ccurl.interface.js';
 import * as curl from 'curl.lib.js';
+import { SeedGeneratorNode } from '../src/impl/SeedGeneratorNode';
+import { SeedGeneratorWeb } from '../src/impl/SeedGeneratorWeb';
 
 jest.mock('ccurl.interface.js');
 jest.mock('curl.lib.js');
@@ -136,4 +138,27 @@ test('Should call the localAttach of CurlHashWebGl when on node when attachToTan
     1
   );
   expect(spy).toHaveBeenCalled;
+});
+test('should generate a valid seed on Node', async () => {
+  const iota = new Iota(testSeed, '', iotaClient);
+  let seed = await iota.generateSeed();
+  let seedGenerator = iota.seedGenerator;
+  expect(iotaClient.valid.isAddress(seed)).toBe(true);
+  expect(seedGenerator instanceof SeedGeneratorNode).toBe(true);
+});
+test('should generate a valid seed on Web', async () => {
+  global.window = {};
+  global.window.crypto = {};
+  global.window.crypto.getRandomValues = array => {
+    const mockData = require('./mock-data/randomweb.json').values.split(',');
+    for (let i = 0; i < mockData.length; i++) {
+      mockData[i] = parseInt(mockData[i]);
+    }
+    array = Uint32Array.from(mockData);
+  };
+  const iota = new Iota(testSeed, '', iotaClient);
+  let seed = await iota.generateSeed();
+  let seedGenerator = iota.seedGenerator;
+  expect(iotaClient.valid.isAddress(seed)).toBe(true);
+  expect(seedGenerator instanceof SeedGeneratorWeb).toBe(true);
 });

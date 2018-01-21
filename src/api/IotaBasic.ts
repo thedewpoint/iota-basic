@@ -2,6 +2,7 @@ import { IAccountData, ITransfer } from './AccountData';
 
 export interface IIotaBasic {
   getReceiveAddress(): Promise<string>;
+  generateSeed(): Promise<string>;
   sendTransaction(
     receivingAddress: string,
     value: number,

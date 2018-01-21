@@ -7,10 +7,14 @@ import {
 } from '../api/AccountData';
 import { ICurlHash } from '../api/CurlHash';
 import { IIotaBasic } from '../api/IotaBasic';
+import { ISeedGenerator } from '../api/SeedGenerator';
 import CurlFactory from './CurlFactory';
+import SeedGeneratorFactory from './SeedGeneratorFactory';
 
 export class Iota implements IIotaBasic {
   public readonly ccurlProvider: ICurlHash;
+  public readonly seedGenerator: ISeedGenerator;
+
   private seed: string;
   private iota: any;
   constructor(
@@ -21,6 +25,7 @@ export class Iota implements IIotaBasic {
     this.seed = seed;
     this.iota = testClient ? testClient : new IOTA({ provider: node });
     this.ccurlProvider = CurlFactory.getCurlHasher();
+    this.seedGenerator = SeedGeneratorFactory.getSeedGenerator();
     this.ccurlProvider.init(this.iota);
   }
   public getReceiveAddress(): Promise<string> {
@@ -37,6 +42,9 @@ export class Iota implements IIotaBasic {
         }
       );
     });
+  }
+  public generateSeed(): Promise<string> {
+    return this.seedGenerator.generateSeed();
   }
   public sendTransaction(
     receivingAddress: string,
