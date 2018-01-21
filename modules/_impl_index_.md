@@ -1,4 +1,4 @@
-[iotauth](../README.md) > ["impl/index"](../modules/_impl_index_.md)
+[iota-basic](../README.md) > ["impl/index"](../modules/_impl_index_.md)
 
 
 
