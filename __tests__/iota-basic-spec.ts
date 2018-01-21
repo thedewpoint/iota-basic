@@ -6,11 +6,13 @@ import { IAccountData } from '../src/api/AccountData';
 import { ICurlHash } from '../src/api/CurlHash';
 import * as ccurl from 'ccurl.interface.js';
 import * as curl from 'curl.lib.js';
+import * as os from 'os';
 import { SeedGeneratorNode } from '../src/impl/SeedGeneratorNode';
 import { SeedGeneratorWeb } from '../src/impl/SeedGeneratorWeb';
 
 jest.mock('ccurl.interface.js');
 jest.mock('curl.lib.js');
+jest.mock('os');
 
 const testSeed =
   'PBGRWJXOALEOBXNUPCFUNWXSEXMYC9BVLLK9HMUDXNOETYJHSKBHDR9SWAWJIKVPFSBWNCNSQQJUFUPJM';
@@ -78,6 +80,8 @@ test('use ccurl implementation when applicable', async () => {
 });
 test('Should call the localAttach of CurlHash when on node when attachToTangle is called', async () => {
   const iota = new Iota(testSeed, '', iotaClient);
+  var spy = spyOn(os, 'platform').and.returnValue('darwin');
+  var path;
   ccurl.mockImplementationOnce(
     (
       trunkTransaction,
@@ -87,6 +91,7 @@ test('Should call the localAttach of CurlHash when on node when attachToTangle i
       ccurlPath,
       callback
     ) => {
+      path = ccurlPath;
       callback(require('./mock-data/successresponse.json').data);
     }
   );
@@ -96,6 +101,7 @@ test('Should call the localAttach of CurlHash when on node when attachToTangle i
   );
 
   expect(ccurl).toHaveBeenCalled();
+  expect(path.indexOf('darwin') > -1).toBe(true);
 });
 test('should generate a valid checksum for a seed', async () => {
   const iota = new Iota(testSeed, '', iotaClient);

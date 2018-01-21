@@ -1,4 +1,5 @@
 import * as ccurl from 'ccurl.interface.js';
+import * as os from 'os';
 import * as path from 'path';
 import { ICurlHash } from '../api/CurlHash';
 
@@ -8,7 +9,6 @@ export class CurlHash implements ICurlHash {
     iota.api.attachToTangle = this.localAttachToTangle;
     iota.api.__proto__.attachToTangle = this.localAttachToTangle;
   }
-
   private localAttachToTangle(
     trunkTransaction: any,
     branchTransaction: any,
@@ -16,12 +16,13 @@ export class CurlHash implements ICurlHash {
     trytes: any,
     callback: any
   ): void {
+    const platform = os.platform();
     const ccurlPath: string = path.join(
       __dirname,
       '..',
       '..',
       'binaries',
-      'mac'
+      platform
     );
     ccurl(
       trunkTransaction,
