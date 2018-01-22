@@ -46,13 +46,13 @@ const seed = await iota.generateSeed();
 const accountData = await iota.getAccountData();
 
 //just return the balance of your seed
-const accountData = await iota.getBalance();
+const balance = await iota.getBalance();
 
 //get the checksum for your seed to know that you entered it correctly
-const accountData = await iota.getCheckSum();
+const checkSum = await iota.getCheckSum();
 
 //get the receive address for your seed without any transactions
-const accountData = await iota.getReceiveAddress();
+const receiveAddress = await iota.getReceiveAddress();
 
 ```
 
