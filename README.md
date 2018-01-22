@@ -13,6 +13,9 @@
 Iota-Basic was born out of my desire to write my own wallet or program that interacts with Iota's tangle ledger.
 There are many pieces to learn in order to successfully interact with the API, and Iota-Basic aims to simplify that by bringing them all together and integrating them for you in one module.This library automatically detects if you are running in Node or in the browser and uses different implementations for generating seeds or doing proof of work behind the scenes. The way you interact with the library remains the same. This library provides the necessary binaries  (From the official release repo)  for the 3 major platforms (mac, linux, windows) when running on node, and it also provides the interface for the webgl2 implementation if you are in a browser. The goal is to reduce the learning curve for anyone who wants to code with Iota tangle and do simple code interactions.
 
+Only Node version 8.x.x is supported at this time due to FFI not working on node version 9.
+related issue: https://github.com/node-ffi/node-ffi/issues/438
+
 Using npm:
 ```shell
 $ npm i --save iota-basic
