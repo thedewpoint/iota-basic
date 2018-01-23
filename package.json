@@ -1,6 +1,6 @@
 {
   "name": "iota-basic",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a library for basic interactions with the iota tangle",
   "license": "GPL-3.0",
   "repository": "https://github.com/thedewpoint/iota-basic.git",
