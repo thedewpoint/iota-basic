@@ -17,6 +17,7 @@ export class CurlHashWebGl implements ICurlHash {
 
   public init(iota: any): void {
     this.iota = iota;
+    curl.init();
     iota.api.attachToTangle = this.getAttach(iota);
     iota.api.__proto__.attachToTangle = this.getAttach(iota);
   }
@@ -117,7 +118,7 @@ export class CurlHashWebGl implements ICurlHash {
         minWeightMagnitudeLocal,
         trytesLocal,
         (error: any, success: any) => {
-            return callbackLocal(error, success);
+          return callbackLocal(error, success);
         }
       );
     };

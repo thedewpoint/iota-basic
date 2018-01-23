@@ -44,7 +44,7 @@ export class CurlHash implements ICurlHash {
       trytes,
       ccurlPath,
       (error: any, success: any) => {
-          return callback(error, success);
+        return callback(error, success);
       }
     );
   }

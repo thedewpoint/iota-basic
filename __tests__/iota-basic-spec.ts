@@ -56,13 +56,15 @@ test('should return a receive address', async () => {
 });
 test('should reject with error when an error occurs', async () => {
   const iota: IIotaBasic = new Iota(testSeed, '', iotaClient);
-  const spy = spyOn(iotaClient.api, "getNewAddress").and.callFake((seed,options,callback)=>{
+  const spy = spyOn(iotaClient.api, 'getNewAddress').and.callFake(
+    (seed, options, callback) => {
       callback(new Error('error occured'), null);
-  });
+    }
+  );
   let error;
-  try{
-    let receiveAddress: string = await iota.getReceiveAddress()
-  } catch(e) {
+  try {
+    let receiveAddress: string = await iota.getReceiveAddress();
+  } catch (e) {
     error = e;
   }
   expect(error).toBeDefined();
@@ -74,13 +76,15 @@ test('should return the account balance', async () => {
 });
 test('should reject with error when an error occurs on account balance', async () => {
   const iota: IIotaBasic = new Iota(testSeed, '', iotaClient);
-  const spy = spyOn(iotaClient.api, "getInputs").and.callFake((seed,options,callback)=>{
+  const spy = spyOn(iotaClient.api, 'getInputs').and.callFake(
+    (seed, options, callback) => {
       callback(new Error('error occured'), null);
-  });
+    }
+  );
   let error;
-  try{
+  try {
     let balance = await iota.getBalance();
-  } catch(e) {
+  } catch (e) {
     error = e;
   }
   expect(error).toBeDefined();
@@ -100,13 +104,15 @@ test('should return account data correctly', async () => {
 });
 test('should reject with error when an error occurs on accountData', async () => {
   const iota: IIotaBasic = new Iota(testSeed, '', iotaClient);
-  const spy = spyOn(iotaClient.api, "getAccountData").and.callFake((seed,options,callback)=>{
+  const spy = spyOn(iotaClient.api, 'getAccountData').and.callFake(
+    (seed, options, callback) => {
       callback(new Error('error occured'), null);
-  });
+    }
+  );
   let error;
-  try{
+  try {
     let accountData = await iota.getAccountData();
-  } catch(e) {
+  } catch (e) {
     error = e;
   }
   expect(error).toBeDefined();
