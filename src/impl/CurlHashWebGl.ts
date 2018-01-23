@@ -117,11 +117,7 @@ export class CurlHashWebGl implements ICurlHash {
         minWeightMagnitudeLocal,
         trytesLocal,
         (error: any, success: any) => {
-          if (callbackLocal) {
             return callbackLocal(error, success);
-          } else {
-            return success;
-          }
         }
       );
     };

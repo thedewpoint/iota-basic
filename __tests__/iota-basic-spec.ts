@@ -54,10 +54,36 @@ test('should return a receive address', async () => {
   let receiveAddress: string = await iota.getReceiveAddress();
   expect(iotaClient.valid.isAddress(receiveAddress)).toBe(true);
 });
+test('should reject with error when an error occurs', async () => {
+  const iota: IIotaBasic = new Iota(testSeed, '', iotaClient);
+  const spy = spyOn(iotaClient.api, "getNewAddress").and.callFake((seed,options,callback)=>{
+      callback(new Error('error occured'), null);
+  });
+  let error;
+  try{
+    let receiveAddress: string = await iota.getReceiveAddress()
+  } catch(e) {
+    error = e;
+  }
+  expect(error).toBeDefined();
+});
 test('should return the account balance', async () => {
   const iota: IIotaBasic = new Iota(testSeed, '', iotaClient);
   let balance: number = await iota.getBalance();
   expect(balance).toBe(2);
+});
+test('should reject with error when an error occurs on account balance', async () => {
+  const iota: IIotaBasic = new Iota(testSeed, '', iotaClient);
+  const spy = spyOn(iotaClient.api, "getInputs").and.callFake((seed,options,callback)=>{
+      callback(new Error('error occured'), null);
+  });
+  let error;
+  try{
+    let balance = await iota.getBalance();
+  } catch(e) {
+    error = e;
+  }
+  expect(error).toBeDefined();
 });
 test('should return account data correctly', async () => {
   const iota: IIotaBasic = new Iota(testSeed, '', iotaClient);
@@ -71,6 +97,19 @@ test('should return account data correctly', async () => {
   expect(accountData.transfers[0][0].hash).toBe(
     'PLMTQUAD9SVHLEEDGMGJUGGZKJXPXGCB9GNYLNVYQEYKZRLDJJNDQFWPRAHNWBXRKJIMRZZCVQTK99999'
   );
+});
+test('should reject with error when an error occurs on accountData', async () => {
+  const iota: IIotaBasic = new Iota(testSeed, '', iotaClient);
+  const spy = spyOn(iotaClient.api, "getAccountData").and.callFake((seed,options,callback)=>{
+      callback(new Error('error occured'), null);
+  });
+  let error;
+  try{
+    let accountData = await iota.getAccountData();
+  } catch(e) {
+    error = e;
+  }
+  expect(error).toBeDefined();
 });
 test('use ccurl implementation when applicable', async () => {
   const iota = new Iota(testSeed, '', iotaClient);
@@ -145,6 +184,21 @@ test('Should call the localAttach of CurlHashWebGl when on node when attachToTan
   );
   expect(spy).toHaveBeenCalled;
 });
+// test('should convert json data to trytes in a transfer array', async () => {
+//   const iota: IIotaBasic = new Iota(testSeed, '', iotaClient);
+//   let transfers;
+//   const spy = spyOn(iotaClient.api, "sendTransfer").and.callFake((seed,depth,mwm,transactions,callback)=>{
+//       transfers = transactions;
+//       callback(null, true);
+//   });
+//   let error;
+//   try{
+//     let accountData = await iota.getAccountData();
+//   } catch(e) {
+//     error = e;
+//   }
+//   expect(error).toBeDefined();
+// });
 test('should generate a valid seed on Node', async () => {
   const iota = new Iota(testSeed, '', iotaClient);
   let seed = await iota.generateSeed();
