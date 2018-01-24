@@ -21,7 +21,7 @@ var iotaClient;
 beforeAll(() => {
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
   iotaClient = new IOTA({
-    provider: 'https://iotanode.us:443',
+    provider: 'http://iotanode.farm:14265',
   });
   const getNewAddress = jest
     .fn()
