@@ -35,7 +35,7 @@ Seed generator using the node crypto library which uses system entropy to genera
 
 *Implementation of [ISeedGenerator](../interfaces/_api_seedgenerator_.iseedgenerator.md).[generateSeed](../interfaces/_api_seedgenerator_.iseedgenerator.md#generateseed)*
 
-*Defined in [impl/SeedGeneratorNode.ts:15](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/SeedGeneratorNode.ts#L15)*
+*Defined in [impl/SeedGeneratorNode.ts:15](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/SeedGeneratorNode.ts#L15)*
 
 
 
@@ -60,7 +60,7 @@ ___
 
 
 
-*Defined in [impl/SeedGeneratorNode.ts:22](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/SeedGeneratorNode.ts#L22)*
+*Defined in [impl/SeedGeneratorNode.ts:22](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/SeedGeneratorNode.ts#L22)*
 
 
 

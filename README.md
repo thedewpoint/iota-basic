@@ -2,6 +2,7 @@
 
 
 
+
 # Iota-basic
 [![Build Status](https://travis-ci.org/thedewpoint/iotauth.svg?branch=master)](https://travis-ci.org/thedewpoint/iota-basic.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/thedewpoint/iota-basic/badge.svg?branch=master&service=github)](https://coveralls.io/github/thedewpoint/iota-basic?branch=master)
@@ -15,6 +16,8 @@ There are many pieces to learn in order to successfully interact with the API, a
 
 Only Node version 8.x.x is supported at this time due to FFI not working on node version 9.
 related issue: https://github.com/node-ffi/node-ffi/issues/438
+
+NOTE: As of version 2.0 seed generation has been moved as a directive from the foundation for no 3rd party seed generators. 
 
 Using npm:
 ```shell
@@ -39,8 +42,6 @@ iota.sendTransaction("RECEIVEADDRESS9999",1).then((success)=>{
 //with await async
 const success = await iota.sendTransaction("RECEIVEADDRESS9999",1);
 
-//generating a secure seed using crypto library in node and window.crypto in browser
-const seed = await iota.generateSeed();
 
 //getting accountdata for your seed
 const accountData = await iota.getAccountData();
@@ -68,9 +69,7 @@ const receiveAddress = await iota.getReceiveAddress();
 * ["impl/CurlHash"](modules/_impl_curlhash_.md)
 * ["impl/CurlHashWebGl"](modules/_impl_curlhashwebgl_.md)
 * ["impl/IotaBasic"](modules/_impl_iotabasic_.md)
-* ["impl/SeedGeneratorFactory"](modules/_impl_seedgeneratorfactory_.md)
-* ["impl/SeedGeneratorNode"](modules/_impl_seedgeneratornode_.md)
-* ["impl/SeedGeneratorWeb"](modules/_impl_seedgeneratorweb_.md)
+
 
 
 

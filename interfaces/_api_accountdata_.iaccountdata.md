@@ -15,7 +15,7 @@ Represents AccountData object returned by iota.lib.js getAccountData.
 
 **●  addresses**:  *`string`[]⎮`null`* 
 
-*Defined in [api/AccountData.ts:6](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L6)*
+*Defined in [api/AccountData.ts:6](https://github.com/thedewpoint/iota-basic/blob/714f837/src/api/AccountData.ts#L6)*
 
 
 
@@ -29,7 +29,7 @@ ___
 
 **●  balance**:  *`number`* 
 
-*Defined in [api/AccountData.ts:9](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L9)*
+*Defined in [api/AccountData.ts:9](https://github.com/thedewpoint/iota-basic/blob/714f837/src/api/AccountData.ts#L9)*
 
 
 
@@ -43,7 +43,7 @@ ___
 
 **●  inputs**:  *[IInput](_api_accountdata_.iinput.md)[]⎮`null`* 
 
-*Defined in [api/AccountData.ts:8](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L8)*
+*Defined in [api/AccountData.ts:8](https://github.com/thedewpoint/iota-basic/blob/714f837/src/api/AccountData.ts#L8)*
 
 
 
@@ -57,7 +57,7 @@ ___
 
 **●  latestAddress**:  *`string`* 
 
-*Defined in [api/AccountData.ts:5](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L5)*
+*Defined in [api/AccountData.ts:5](https://github.com/thedewpoint/iota-basic/blob/714f837/src/api/AccountData.ts#L5)*
 
 
 
@@ -71,7 +71,7 @@ ___
 
 **●  transfers**:  *[ITransfer](_api_accountdata_.itransfer.md)[]⎮`null`* 
 
-*Defined in [api/AccountData.ts:7](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/AccountData.ts#L7)*
+*Defined in [api/AccountData.ts:7](https://github.com/thedewpoint/iota-basic/blob/714f837/src/api/AccountData.ts#L7)*
 
 
 

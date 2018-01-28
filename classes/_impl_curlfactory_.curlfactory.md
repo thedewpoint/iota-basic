@@ -28,7 +28,7 @@ Factory for returning an implementation of ICurlHash depending on whether the pr
 
 
 
-*Defined in [impl/CurlFactory.ts:12](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/CurlFactory.ts#L12)*
+*Defined in [impl/CurlFactory.ts:12](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/CurlFactory.ts#L12)*
 
 
 
@@ -53,7 +53,7 @@ ___
 
 
 
-*Defined in [impl/CurlFactory.ts:24](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/CurlFactory.ts#L24)*
+*Defined in [impl/CurlFactory.ts:24](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/CurlFactory.ts#L24)*
 
 
 

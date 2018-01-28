@@ -13,28 +13,6 @@ Interface describing the basic methods exposed by any implementation of IotaBasi
 
 
 ## Methods
-<a id="generateseed"></a>
-
-###  generateSeed
-
-► **generateSeed**(): `Promise`.<`string`>
-
-
-
-*Defined in [api/IotaBasic.ts:8](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/IotaBasic.ts#L8)*
-
-
-
-
-
-**Returns:** `Promise`.<`string`>
-
-
-
-
-
-___
-
 <a id="getaccountdata"></a>
 
 ###  getAccountData
@@ -43,7 +21,7 @@ ___
 
 
 
-*Defined in [api/IotaBasic.ts:16](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/IotaBasic.ts#L16)*
+*Defined in [api/IotaBasic.ts:16](https://github.com/thedewpoint/iota-basic/blob/714f837/src/api/IotaBasic.ts#L16)*
 
 
 
@@ -65,7 +43,7 @@ ___
 
 
 
-*Defined in [api/IotaBasic.ts:15](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/IotaBasic.ts#L15)*
+*Defined in [api/IotaBasic.ts:15](https://github.com/thedewpoint/iota-basic/blob/714f837/src/api/IotaBasic.ts#L15)*
 
 
 
@@ -87,7 +65,7 @@ ___
 
 
 
-*Defined in [api/IotaBasic.ts:14](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/IotaBasic.ts#L14)*
+*Defined in [api/IotaBasic.ts:14](https://github.com/thedewpoint/iota-basic/blob/714f837/src/api/IotaBasic.ts#L14)*
 
 
 
@@ -109,7 +87,7 @@ ___
 
 
 
-*Defined in [api/IotaBasic.ts:7](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/IotaBasic.ts#L7)*
+*Defined in [api/IotaBasic.ts:7](https://github.com/thedewpoint/iota-basic/blob/714f837/src/api/IotaBasic.ts#L7)*
 
 
 
@@ -131,7 +109,7 @@ ___
 
 
 
-*Defined in [api/IotaBasic.ts:9](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/IotaBasic.ts#L9)*
+*Defined in [api/IotaBasic.ts:9](https://github.com/thedewpoint/iota-basic/blob/714f837/src/api/IotaBasic.ts#L9)*
 
 
 

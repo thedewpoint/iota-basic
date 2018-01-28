@@ -66,9 +66,9 @@ export class Iota implements IIotaBasic {
    * Generate a secure seed using an implementation of SeedGenerator
    *
    */
-  public generateSeed(): Promise<string> {
-    return this.seedGenerator.generateSeed();
-  }
+  // public generateSeed(): Promise<string> {
+  //   return this.seedGenerator.generateSeed();
+  // }
   /**
    * sendTransaction for sending value from your seed to another address or just sending data
    * @param {string} receiveAddress - the address to send to

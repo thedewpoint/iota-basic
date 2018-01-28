@@ -34,7 +34,7 @@ CurlHash leverages the CCurl binary and ccurl.interface.js to do pow this implem
 
 *Implementation of [ICurlHash](../interfaces/_api_curlhash_.icurlhash.md).[init](../interfaces/_api_curlhash_.icurlhash.md#init)*
 
-*Defined in [impl/CurlHash.ts:17](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/CurlHash.ts#L17)*
+*Defined in [impl/CurlHash.ts:17](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/CurlHash.ts#L17)*
 
 
 
@@ -67,7 +67,7 @@ ___
 
 
 
-*Defined in [impl/CurlHash.ts:25](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/CurlHash.ts#L25)*
+*Defined in [impl/CurlHash.ts:25](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/CurlHash.ts#L25)*
 
 
 

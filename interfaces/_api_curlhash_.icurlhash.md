@@ -22,7 +22,7 @@ Interface describing the implementation a curlhasher must have.
 
 
 
-*Defined in [api/CurlHash.ts:10](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/api/CurlHash.ts#L10)*
+*Defined in [api/CurlHash.ts:10](https://github.com/thedewpoint/iota-basic/blob/714f837/src/api/CurlHash.ts#L10)*
 
 
 

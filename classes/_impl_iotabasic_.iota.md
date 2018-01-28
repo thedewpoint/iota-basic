@@ -28,7 +28,6 @@ implementation of the IIotaBasic interface
 
 ### Methods
 
-* [generateSeed](_impl_iotabasic_.iota.md#generateseed)
 * [getAccountData](_impl_iotabasic_.iota.md#getaccountdata)
 * [getBalance](_impl_iotabasic_.iota.md#getbalance)
 * [getChecksum](_impl_iotabasic_.iota.md#getchecksum)
@@ -45,7 +44,7 @@ implementation of the IIotaBasic interface
 ### ⊕ **new Iota**(seed: *`string`*, node?: *`string`*, testClient?: *`any`*, pow?: *`boolean`*): [Iota](_impl_iotabasic_.iota.md)
 
 
-*Defined in [impl/IotaBasic.ts:22](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L22)*
+*Defined in [impl/IotaBasic.ts:22](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/IotaBasic.ts#L22)*
 
 
 
@@ -79,7 +78,7 @@ init function takes the iotaclient and overrides attachToTangle
 
 **●  ccurlProvider**:  *[ICurlHash](../interfaces/_api_curlhash_.icurlhash.md)* 
 
-*Defined in [impl/IotaBasic.ts:18](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L18)*
+*Defined in [impl/IotaBasic.ts:18](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/IotaBasic.ts#L18)*
 
 
 
@@ -93,7 +92,7 @@ ___
 
 **●  iota**:  *`any`* 
 
-*Defined in [impl/IotaBasic.ts:22](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L22)*
+*Defined in [impl/IotaBasic.ts:22](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/IotaBasic.ts#L22)*
 
 
 
@@ -107,7 +106,7 @@ ___
 
 **●  seed**:  *`string`* 
 
-*Defined in [impl/IotaBasic.ts:21](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L21)*
+*Defined in [impl/IotaBasic.ts:21](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/IotaBasic.ts#L21)*
 
 
 
@@ -121,7 +120,7 @@ ___
 
 **●  seedGenerator**:  *[ISeedGenerator](../interfaces/_api_seedgenerator_.iseedgenerator.md)* 
 
-*Defined in [impl/IotaBasic.ts:19](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L19)*
+*Defined in [impl/IotaBasic.ts:19](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/IotaBasic.ts#L19)*
 
 
 
@@ -131,33 +130,6 @@ ___
 
 
 ## Methods
-<a id="generateseed"></a>
-
-###  generateSeed
-
-► **generateSeed**(): `Promise`.<`string`>
-
-
-
-*Implementation of [IIotaBasic](../interfaces/_api_iotabasic_.iiotabasic.md).[generateSeed](../interfaces/_api_iotabasic_.iiotabasic.md#generateseed)*
-
-*Defined in [impl/IotaBasic.ts:69](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L69)*
-
-
-
-Generate a secure seed using an implementation of SeedGenerator
-
-
-
-
-**Returns:** `Promise`.<`string`>
-
-
-
-
-
-___
-
 <a id="getaccountdata"></a>
 
 ###  getAccountData
@@ -168,7 +140,7 @@ ___
 
 *Implementation of [IIotaBasic](../interfaces/_api_iotabasic_.iiotabasic.md).[getAccountData](../interfaces/_api_iotabasic_.iiotabasic.md#getaccountdata)*
 
-*Defined in [impl/IotaBasic.ts:121](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L121)*
+*Defined in [impl/IotaBasic.ts:121](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/IotaBasic.ts#L121)*
 
 
 
@@ -195,7 +167,7 @@ ___
 
 *Implementation of [IIotaBasic](../interfaces/_api_iotabasic_.iiotabasic.md).[getBalance](../interfaces/_api_iotabasic_.iiotabasic.md#getbalance)*
 
-*Defined in [impl/IotaBasic.ts:107](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L107)*
+*Defined in [impl/IotaBasic.ts:107](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/IotaBasic.ts#L107)*
 
 
 
@@ -222,7 +194,7 @@ ___
 
 *Implementation of [IIotaBasic](../interfaces/_api_iotabasic_.iiotabasic.md).[getChecksum](../interfaces/_api_iotabasic_.iiotabasic.md#getchecksum)*
 
-*Defined in [impl/IotaBasic.ts:139](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L139)*
+*Defined in [impl/IotaBasic.ts:139](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/IotaBasic.ts#L139)*
 
 
 
@@ -249,7 +221,7 @@ ___
 
 *Implementation of [IIotaBasic](../interfaces/_api_iotabasic_.iiotabasic.md).[getReceiveAddress](../interfaces/_api_iotabasic_.iiotabasic.md#getreceiveaddress)*
 
-*Defined in [impl/IotaBasic.ts:50](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L50)*
+*Defined in [impl/IotaBasic.ts:50](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/IotaBasic.ts#L50)*
 
 
 
@@ -276,7 +248,7 @@ ___
 
 *Implementation of [IIotaBasic](../interfaces/_api_iotabasic_.iiotabasic.md).[sendTransaction](../interfaces/_api_iotabasic_.iiotabasic.md#sendtransaction)*
 
-*Defined in [impl/IotaBasic.ts:78](https://github.com/thedewpoint/iota-basic/blob/243d8a8/src/impl/IotaBasic.ts#L78)*
+*Defined in [impl/IotaBasic.ts:78](https://github.com/thedewpoint/iota-basic/blob/714f837/src/impl/IotaBasic.ts#L78)*
 
 
 
