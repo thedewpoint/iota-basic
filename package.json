@@ -1,6 +1,6 @@
 {
   "name": "iota-basic",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "a library for basic interactions with the iota tangle",
   "license": "GPL-3.0",
   "repository": "https://github.com/thedewpoint/iota-basic.git",
@@ -39,7 +39,7 @@
   "dependencies": {
     "ccurl.interface.js": "0.0.6",
     "curl.lib.js": "^1.0.22",
-    "iota.lib.js": "^0.4.6"
+    "iota.lib.js": "^0.4.7"
   },
   "devDependencies": {
     "@types/jest": "22.0.0",

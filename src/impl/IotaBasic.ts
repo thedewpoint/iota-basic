@@ -74,11 +74,13 @@ export class Iota implements IIotaBasic {
    * @param {string} receiveAddress - the address to send to
    * @param {number} value - the amount in iota to send
    * @param {any} data - json object representing any data you want to send with the transaction
+   * @param {string} tag - string containing tag for transaction
    */
   public sendTransaction(
     receivingAddress: string,
     value: number,
-    data?: any
+    data?: any,
+    tag: string = ''
   ): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       const message = data
@@ -87,6 +89,7 @@ export class Iota implements IIotaBasic {
       const transaction: ITransaction = {
         address: receivingAddress,
         message,
+        tag,
         value,
       };
       const transactions: ITransaction[] = [transaction];

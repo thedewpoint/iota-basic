@@ -54,4 +54,5 @@ export interface ITransaction {
   address: string;
   value: number;
   message: string;
+  tag: string;
 }

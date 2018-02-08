@@ -228,4 +228,3 @@ test('Should call the localAttach of CurlHashWebGl when on node when attachToTan
 //   expect(iotaClient.valid.isAddress(seed)).toBe(true);
 //   expect(seedGenerator instanceof SeedGeneratorWeb).toBe(true);
 // });
-

@@ -42,6 +42,11 @@ iota.sendTransaction("RECEIVEADDRESS9999",1).then((success)=>{
 //with await async
 const success = await iota.sendTransaction("RECEIVEADDRESS9999",1);
 
+//sending data
+const success = await iota.sendTransaction("RECEIVEADDRESS9999",1, {data: "someData"});
+
+//sending data with valid tag (27 characters or less, all TRYTES)
+const success = await iota.sendTransaction("RECEIVEADDRESS9999",1, {data: "someData"}, "TAG9");
 
 //getting accountdata for your seed
 const accountData = await iota.getAccountData();

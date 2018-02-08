@@ -9,7 +9,8 @@ export interface IIotaBasic {
   sendTransaction(
     receivingAddress: string,
     value: number,
-    data?: any
+    data?: any,
+    tag?: string
   ): Promise<any>;
   getChecksum(): string;
   getBalance(): Promise<number>;
