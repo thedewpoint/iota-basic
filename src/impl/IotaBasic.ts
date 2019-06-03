@@ -30,7 +30,7 @@ export class Iota implements IIotaBasic {
    */
   constructor(
     seed: string,
-    node: string = 'https://iotanode.us:443',
+    node: string = 'https://trinity.iota-tangle.io:14265',
     testClient?: any,
     pow: boolean = true
   ) {
@@ -66,9 +66,9 @@ export class Iota implements IIotaBasic {
    * Generate a secure seed using an implementation of SeedGenerator
    *
    */
-  // public generateSeed(): Promise<string> {
-  //   return this.seedGenerator.generateSeed();
-  // }
+  public generateSeed(): Promise<string> {
+    return this.seedGenerator.generateSeed();
+  }
   /**
    * sendTransaction for sending value from your seed to another address or just sending data
    * @param {string} receiveAddress - the address to send to

@@ -21,7 +21,7 @@ var iotaClient;
 beforeAll(() => {
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
   iotaClient = new IOTA({
-    provider: 'http://iotanode.farm:14265',
+    provider: 'https://trinity.iota-tangle.io:14265',
   });
   const getNewAddress = jest
     .fn()
@@ -205,26 +205,26 @@ test('Should call the localAttach of CurlHashWebGl when on node when attachToTan
 //   }
 //   expect(error).toBeDefined();
 // });
-// test('should generate a valid seed on Node', async () => {
-//   const iota = new Iota(testSeed, '', iotaClient);
-//   let seed = await iota.generateSeed();
-//   let seedGenerator = iota.seedGenerator;
-//   expect(iotaClient.valid.isAddress(seed)).toBe(true);
-//   expect(seedGenerator instanceof SeedGeneratorNode).toBe(true);
-// });
-// test('should generate a valid seed on Web', async () => {
-//   global.window = {};
-//   global.window.crypto = {};
-//   global.window.crypto.getRandomValues = array => {
-//     const mockData = require('./mock-data/randomweb.json').values.split(',');
-//     for (let i = 0; i < mockData.length; i++) {
-//       mockData[i] = parseInt(mockData[i]);
-//     }
-//     array = Uint32Array.from(mockData);
-//   };
-//   const iota = new Iota(testSeed, '', iotaClient);
-//   let seed = await iota.generateSeed();
-//   let seedGenerator = iota.seedGenerator;
-//   expect(iotaClient.valid.isAddress(seed)).toBe(true);
-//   expect(seedGenerator instanceof SeedGeneratorWeb).toBe(true);
-// });
+test('should generate a valid seed on Node', async () => {
+  const iota = new Iota(testSeed, '', iotaClient);
+  let seed = await iota.generateSeed();
+  let seedGenerator = iota.seedGenerator;
+  expect(iotaClient.valid.isAddress(seed)).toBe(true);
+  expect(seedGenerator instanceof SeedGeneratorNode).toBe(true);
+});
+test('should generate a valid seed on Web', async () => {
+  global.window = {};
+  global.window.crypto = {};
+  global.window.crypto.getRandomValues = array => {
+    const mockData = require('./mock-data/randomweb.json').values.split(',');
+    for (let i = 0; i < mockData.length; i++) {
+      mockData[i] = parseInt(mockData[i]);
+    }
+    array = Uint32Array.from(mockData);
+  };
+  const iota = new Iota(testSeed, '', iotaClient);
+  let seed = await iota.generateSeed();
+  let seedGenerator = iota.seedGenerator;
+  expect(iotaClient.valid.isAddress(seed)).toBe(true);
+  expect(seedGenerator instanceof SeedGeneratorWeb).toBe(true);
+});
